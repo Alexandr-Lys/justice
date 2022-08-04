@@ -1,7 +1,7 @@
 import React from 'react';
 import { Checkbox, FormControlLabel } from '@mui/material';
 
-const MyCheckbox = ({ label, type }) => {
+const CheckboxComponent = ({ label, type }) => {
   let color = 'gray';
   if (type === 'error') color = '#D24242';
   return (
@@ -9,4 +9,4 @@ const MyCheckbox = ({ label, type }) => {
   );
 };
 
-export default MyCheckbox;
+export default CheckboxComponent;

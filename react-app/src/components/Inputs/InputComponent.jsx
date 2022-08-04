@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField, styled } from '@mui/material';
 
-const MyInput = ({ type, text, error }) => {
+const InputComponent = ({ type, text, error }) => {
   const CssTextField = styled(TextField)({
     backgroundColor: 'transparent',
     caretColor: 'white',
@@ -86,4 +86,4 @@ const MyInput = ({ type, text, error }) => {
   }
 };
 
-export default MyInput;
+export default InputComponent;
