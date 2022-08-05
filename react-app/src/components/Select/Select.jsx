@@ -60,6 +60,7 @@ const Select = ({ currencyList }) => {
               backgroundColor: '#191F29 !important',
             },
             '&.Select ul': {
+              backgroundColor: '#191F29',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
