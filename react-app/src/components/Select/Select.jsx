@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import {
-  Autocomplete, Box, Input, InputAdornment, TextField,
+  Autocomplete, Box, GlobalStyles, Input, InputAdornment, TextField,
 } from '@mui/material';
 import CurrencyName from '../CurrencyName';
-import BTC from '../../icons/Bitcoin.png';
-import './SelectStyle.css';
+import BTC from '../../assets/icons/Bitcoin.png';
 
 const Select = ({ currencyList }) => {
   const [image, setImage] = useState(BTC);
@@ -43,7 +42,33 @@ const Select = ({ currencyList }) => {
           }}
         >
           <img src={image} alt="" />
+          <GlobalStyles styles={{
+            '&.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper': {
+              backgroundColor: '#191F29 !important',
+              color: '#FFFFFF !important',
+            },
+            '&.Select li': {
+              margin: '0',
+              width: '77px',
+              height: '56px',
+              display: 'flex !important',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+            },
+            '&.css-17mla5t-MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected="true"]': {
+              backgroundColor: '#191F29 !important',
+            },
+            '&.Select ul': {
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+            },
+          }}
+          />
           <Autocomplete
+            componentsProps={{ popper: { className: 'Select' } }}
             onChange={(e) => {
               setImage(e.currentTarget.firstChild.firstChild.attributes[0].value);
             }}
@@ -78,8 +103,8 @@ const Select = ({ currencyList }) => {
                   display: 'block !important',
                   backgroundColor: 'transparent',
                   ml: '16px',
-                  width: '65px',
                   padding: '0 !important',
+                  mb: '20px',
                   '& img': {
                     width: '24px',
                   },
@@ -108,37 +133,5 @@ const Select = ({ currencyList }) => {
   );
 };
 
-// <Autocomplete
-//   id="country-select-demo"
-//   sx={{ width: 300 }}
-//   options={[{ label: 'BTC', urlImg: '../../Bitcoin.png' },
-//     { label: 'ETH', urlImg: '../../Bitcoin.png' }]}
-//   autoHighlight
-//   getOptionLabel={(option) => option.label}
-//   renderOption={(props, option) => (
-//     <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-//       <img
-//         loading="lazy"
-//         width="20"
-//         src="../../Bitcoin.png"
-//         srcSet="../../Bitcoin.png"
-//         alt=""
-//       />
-//       {option.label}
-//     </Box>
-//   )}
-//   renderInput={(params) => (
-//     <TextField
-//       {...params}
-//       label="Choose a country"
-//       inputProps={{
-//         ...params.inputProps,
-//         autoComplete: 'new-password', // disable autocomplete and autofill
-//       }}
-//     />
-//   )}
-// />
-
 export default Select;
-// { value, currency }
 
