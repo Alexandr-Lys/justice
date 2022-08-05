@@ -69,7 +69,7 @@ const SearchInput = ({ currencyList }) => (
 
       }}
       options={currencyList}
-      getOptionLabel={(option) => option.shortName}
+      getOptionLabel={(option) => option.fullName}
       renderOption={(props, option) => (
         <Box
           component="li"
