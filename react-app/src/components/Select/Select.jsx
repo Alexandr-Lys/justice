@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import {
   Autocomplete, Box, GlobalStyles, Input, InputAdornment, TextField,
 } from '@mui/material';
+
 import CurrencyName from '../CurrencyName';
+
 import BTC from '../../assets/icons/Bitcoin.png';
 
 const Select = ({ currencyList }) => {

@@ -3,8 +3,10 @@ import {
   Autocomplete,
   Box, GlobalStyles, TextField,
 } from '@mui/material';
-import { ReactComponent as SearchIcon } from '../../assets/svg/SearchIcon.svg';
+
 import CurrencyName from '../CurrencyName';
+
+import { ReactComponent as SearchIcon } from '../../assets/svg/SearchIcon.svg';
 
 const SearchInput = ({ currencyList }) => (
   <>

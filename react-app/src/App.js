@@ -4,8 +4,7 @@ import {
   ThemeProvider, createTheme, Box,
 } from '@mui/material';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
-import BTC from './assets/icons/Bitcoin.png';
-import ETH from './assets/icons/Etherium.png';
+
 import ButtonComponent from './components/Buttons/ButtonComponent';
 import CheckboxComponent from './components/Checkbox/CheckboxComponent';
 import InputComponent from './components/Inputs/InputComponent';
@@ -20,6 +19,9 @@ import Tag from './components/Tags/Tag';
 import Notification from './components/Notification/Notification';
 import Navbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
+
+import BTC from './assets/icons/Bitcoin.png';
+import ETH from './assets/icons/Etherium.png';
 
 const App = () => {
   const theme = createTheme({

@@ -3,6 +3,7 @@ import {
   Box, Card, CardContent, Typography,
 } from '@mui/material';
 import Button from '@mui/material/Button';
+
 import { ReactComponent as Ellipse } from '../../assets/svg/Ellipse.svg';
 import { ReactComponent as PersonFilled } from '../../assets/svg/PersonFilled.svg';
 
