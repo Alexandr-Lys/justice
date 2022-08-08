@@ -49,34 +49,4 @@ const PaginationComponent = ({ quantity }) => {
   );
 };
 
-// <Box sx={{
-//   display: 'flex',
-//   alignItems: 'center',
-//   gap: '61px',
-// }}
-// >
-//   <Typography variant="body2" sx={{ color: '#8C939D' }}>
-//     Результат: 1-
-//     {limitResult}
-//     {' '}
-//     из
-//     {' '}
-//     {totalResult}
-//   </Typography>
-//   <Pagination
-//     onChange={() => {}}
-//     count={Math.ceil(totalResult / limitResult)}
-//     shape="rounded"
-//     color="secondary"
-//     sx={{
-//       '& button, & div': {
-//         color: '#FFFFFF',
-//       },
-//       '& button:hover': {
-//         backgroundColor: 'primary.main',
-//       },
-//     }}
-//   />
-// </Box>
-
 export default PaginationComponent;

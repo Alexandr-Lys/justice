@@ -80,7 +80,7 @@ const App = () => {
               />
               <Status text="Успешно" />
               <Select currencyList={[{ label: 'BTC', img: BTC }, { label: 'ETH', img: ETH }]} />
-              <RadioButton />
+              <RadioButton text="Банковская карта (Mastercard)" />
               <Modal open={false} variant />
               <Tag tagValue="100%" />
               <Notification status="success" size="small" />

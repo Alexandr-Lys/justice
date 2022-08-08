@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Box, List, ListItemButton, ListItemText,
 } from '@mui/material';
+
 import { Link } from 'react-router-dom';
 
 import { ReactComponent as Chart } from '../../assets/svg/chart.svg';
@@ -20,7 +21,6 @@ const Sidebar = () => {
   return (
     <Box sx={{
       width: '240px',
-      // maxWidth: 360,
       bgcolor: 'transparent',
       color: '#FFFFFF',
       '& .Mui-selected': {
