@@ -1,11 +1,28 @@
 import React from 'react';
 import { Checkbox, FormControlLabel } from '@mui/material';
+import { Controller } from 'react-hook-form';
 
-const CheckboxComponent = ({ label, type }) => {
+const CheckboxComponent = ({
+  label, type, control, name,
+}) => {
   let color = 'gray';
   if (type === 'error') color = '#D24242';
   return (
-    <FormControlLabel control={<Checkbox sx={{ color: { color } }} />} label={label} sx={{ color: 'white' }} />
+    <Controller
+      control={control}
+      name={name}
+      render={({
+        field,
+        // fieldState: { invalid, isTouched, isDirty },
+        // formState: { touchedFields, dirtyFields }
+      }) => (
+        <FormControlLabel
+          control={<Checkbox sx={{ color: { color } }} onChange={(e) => { field.onChange(e); }} />}
+          label={label}
+          sx={{ color: 'white' }}
+        />
+      )}
+    />
   );
 };
 

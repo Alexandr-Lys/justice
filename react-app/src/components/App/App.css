@@ -1,0 +1,15 @@
+body{
+  background-color: black;
+}
+.App{
+  max-width: 1440px;
+  margin: 0 auto;
+}
+p{
+  font-family: Inter, sans-serif !important;
+}
+a{
+  text-decoration: none;
+}
+
+
