@@ -2,8 +2,8 @@ import React from 'react';
 import { useForm, useFormState } from 'react-hook-form';
 import { Box, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { yupResolver } from '@hookform/resolvers/yup';
+
 import InputComponent from '../Inputs/InputComponent';
 import ButtonComponent from '../Buttons/ButtonComponent';
 import { mainStyles, registerPageStyles } from './MuiStyles';
