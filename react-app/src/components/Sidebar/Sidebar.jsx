@@ -46,7 +46,7 @@ const Sidebar = () => {
             textDecoration: 'none',
             color: '#FFFFFF',
           },
-          '&>div': {
+          '& a:last-of-type>div': {
             mt: '340px',
           },
           '& span': {
@@ -56,7 +56,7 @@ const Sidebar = () => {
           },
         }}
       >
-        <Link to="/">
+        <Link to="/admin/markets">
           <ListItemButton
             selected={selectedIndex === 0}
             onClick={(event) => handleListItemClick(event, 0)}
@@ -65,7 +65,7 @@ const Sidebar = () => {
             <ListItemText primary="Рынки" />
           </ListItemButton>
         </Link>
-        <Link to="/profile">
+        <Link to="/admin/profile">
           <ListItemButton
             selected={selectedIndex === 1}
             onClick={(event) => handleListItemClick(event, 1)}
@@ -74,7 +74,7 @@ const Sidebar = () => {
             <ListItemText primary="Мой профиль" />
           </ListItemButton>
         </Link>
-        <Link to="/convert">
+        <Link to="/admin/convert">
           <ListItemButton
             selected={selectedIndex === 2}
             onClick={(event) => handleListItemClick(event, 2)}
@@ -83,7 +83,7 @@ const Sidebar = () => {
             <ListItemText primary="Конвертер" />
           </ListItemButton>
         </Link>
-        <Link to="/wallet">
+        <Link to="/admin/wallet">
           <ListItemButton
             selected={selectedIndex === 3}
             onClick={(event) => handleListItemClick(event, 3)}
@@ -92,7 +92,7 @@ const Sidebar = () => {
             <ListItemText primary="Кошелек" />
           </ListItemButton>
         </Link>
-        <Link to="/activity">
+        <Link to="/admin/activity">
           <ListItemButton
             selected={selectedIndex === 4}
             onClick={(event) => handleListItemClick(event, 4)}
@@ -101,14 +101,17 @@ const Sidebar = () => {
             <ListItemText primary="Транзакции" />
           </ListItemButton>
         </Link>
-        <ListItemButton
-          selected={selectedIndex === 5}
-          onClick={(event) => handleListItemClick(event, 5)}
-        >
-          <Exit />
-          <ListItemText primary="Выход" />
-        </ListItemButton>
+        <Link to="/">
+          <ListItemButton
+            selected={selectedIndex === 5}
+            onClick={(event) => handleListItemClick(event, 5)}
+          >
+            <Exit />
+            <ListItemText primary="Выход" />
+          </ListItemButton>
+        </Link>
       </List>
+
     </Box>
   );
 };

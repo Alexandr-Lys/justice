@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Container } from '@mui/material';
+
 import { ReactComponent as Logo } from '../../assets/svg/Logo.svg';
 import { ReactComponent as User } from '../../assets/svg/User.svg';
 
