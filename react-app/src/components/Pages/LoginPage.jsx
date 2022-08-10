@@ -2,29 +2,27 @@ import React from 'react';
 import { useForm, useFormState } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
+import { yupResolver } from '@hookform/resolvers/yup';
+
 import InputComponent from '../Inputs/InputComponent';
 import ButtonComponent from '../Buttons/ButtonComponent';
 import CheckboxComponent from '../Checkbox/CheckboxComponent';
 import { loginPageStyles, mainStyles } from './MuiStyles';
+import { schemaValidation } from '../../form/formValidation';
 
 import { ReactComponent as GoogleIcon } from '../../assets/icons/GoogleIcon.svg';
 import { ReactComponent as GitHubIcon } from '../../assets/icons/GitHubIcon.svg';
 import { ReactComponent as IllustrationLogin } from '../../assets/svg/IllustrationLogin.svg';
 
 const LoginPage = () => {
-  const { handleSubmit, control } = useForm({ reValidateMode: 'onSubmit' });
+  const { handleSubmit, control } = useForm({ reValidateMode: 'onSubmit', resolver: yupResolver(schemaValidation) });
   const { errors } = useFormState({ control });
+
   const navigate = useNavigate();
+
   const onSubmit = (data) => {
     console.log(data);
     navigate('/admin/markets');
-  };
-
-  const validationEmail = {
-    required: 'Обязательно к заполнению',
-  };
-  const validationPassword = {
-    required: 'Обязательно к заполнению',
   };
 
   return (
@@ -58,7 +56,6 @@ const LoginPage = () => {
               name="email"
               control={control}
               errorText={errors?.email?.message}
-              validation={validationEmail}
             />
             <InputComponent
               type="password"
@@ -66,7 +63,6 @@ const LoginPage = () => {
               name="password"
               control={control}
               errorText={errors?.password?.message}
-              validation={validationPassword}
             />
             <CheckboxComponent label="Запомнить меня" name="remember" control={control} />
             <ButtonComponent label="Войти" color="secondary" type="submit" />

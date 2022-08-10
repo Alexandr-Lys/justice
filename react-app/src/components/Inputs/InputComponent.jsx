@@ -70,7 +70,6 @@ const InputComponent = ({
         <Controller
           control={control}
           name={name}
-          rules={validation}
           render={({
             field,
           }) => (
@@ -102,7 +101,6 @@ const InputComponent = ({
         <Controller
           control={control}
           name={name}
-          rules={validation}
           render={({
             field,
           }) => (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+
 import ButtonComponent from '../Buttons/ButtonComponent';
 
 import { ReactComponent as Logo } from '../../assets/svg/Logo.svg';

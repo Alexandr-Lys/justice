@@ -18,7 +18,10 @@
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.5",
     "typeface-inter": "^3.18.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@hookform/resolvers": "^2.9.7",
+    "@mui/x-data-grid": "^5.15.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "eslint": "^8.21.0",

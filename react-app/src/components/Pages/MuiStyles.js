@@ -157,6 +157,10 @@ export const registerPageStyles = {
           justifyContent: 'space-between',
           '& div': {
             width: '194px',
+            '& p': {
+              position: 'absolute',
+              top: '55px',
+            },
           },
         }, // !
         '&>div:last-of-type': {

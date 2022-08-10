@@ -1,17 +1,17 @@
-import './App.css';
 import React from 'react';
 import {
   ThemeProvider, createTheme,
 } from '@mui/material';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
+import 'typeface-inter';
+
 import { Theme } from './theme';
 import StartPage from '../Pages/StartPage';
 import RegisterPage from '../Pages/RegisterPage';
 import LoginPage from '../Pages/LoginPage';
 import { routing } from './routing';
 import MainPage from '../Pages/MainPage';
-
-import 'typeface-inter';
+import './App.css';
 
 const App = () => {
   const theme = createTheme(Theme);
