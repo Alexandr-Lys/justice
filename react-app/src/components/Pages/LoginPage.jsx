@@ -5,7 +5,7 @@ import { Box, Typography } from '@mui/material';
 import InputComponent from '../Inputs/InputComponent';
 import ButtonComponent from '../Buttons/ButtonComponent';
 import CheckboxComponent from '../Checkbox/CheckboxComponent';
-import { loginPageStyles } from './MuiStyles';
+import { loginPageStyles, mainStyles } from './MuiStyles';
 
 import { ReactComponent as GoogleIcon } from '../../assets/icons/GoogleIcon.svg';
 import { ReactComponent as GitHubIcon } from '../../assets/icons/GitHubIcon.svg';
@@ -29,7 +29,7 @@ const LoginPage = ({ logIn }) => {
   };
 
   return (
-    <Box sx={loginPageStyles}>
+    <Box sx={{ ...mainStyles, ...loginPageStyles }}>
       <Box>
         <Typography
           variant="h2"

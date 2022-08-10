@@ -4,7 +4,7 @@ import { Box, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import InputComponent from '../Inputs/InputComponent';
 import ButtonComponent from '../Buttons/ButtonComponent';
-import { registerPageStyles } from './MuiStyles';
+import { mainStyles, registerPageStyles } from './MuiStyles';
 import { ReactComponent as GoogleIcon } from '../../assets/icons/GoogleIcon.svg';
 import { ReactComponent as GitHubIcon } from '../../assets/icons/GitHubIcon.svg';
 import { ReactComponent as IllustrationLogin } from '../../assets/svg/IllustrationLogin.svg';
@@ -38,7 +38,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <Box sx={registerPageStyles}>
+    <Box sx={{ ...mainStyles, ...registerPageStyles }}>
       <Box>
         <Typography
           variant="h2"
@@ -95,11 +95,11 @@ const RegisterPage = () => {
                 validation={confirmPasswordValidation}
               />
             </Box>
-            <ButtonComponent label="Войти" color="secondary" type="submit" />
+            <ButtonComponent label="Зарегистрироваться" color="secondary" type="submit" />
             <Box>
               <Typography variant="body2">
-                Нет аккаунта?
-                <Link to="/register">  Создать аккаунт</Link>
+                У вас уже есть учетная запись?
+                <Link to="/register"> Авторизоваться</Link>
               </Typography>
             </Box>
           </Box>

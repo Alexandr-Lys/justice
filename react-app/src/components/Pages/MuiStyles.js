@@ -1,9 +1,15 @@
-export const loginPageStyles = {
+export const mainStyles = {
   maxWidth: '1440px',
+  height: '100vh',
+  margin: '0 auto',
+};
+
+export const loginPageStyles = {
   height: '100vh',
   display: 'flex',
   justifyContent: 'space-between',
   '&>div:first-of-type': {
+    marginLeft: '112px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -59,6 +65,7 @@ export const loginPageStyles = {
         },
         '& button': {
           width: '420px',
+          height: '56px',
           margin: '48px 0 32px',
         },
         '&>div:last-of-type': {
@@ -74,7 +81,7 @@ export const loginPageStyles = {
     },
   },
   '&>div:last-of-type': {
-    maxWidth: '720px',
+    width: '720px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -83,11 +90,10 @@ export const loginPageStyles = {
 };
 
 export const registerPageStyles = {
-  maxWidth: '1440px',
-  height: '100vh',
   display: 'flex',
   justifyContent: 'space-between',
   '&>div:first-of-type': {
+    marginLeft: '112px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -143,6 +149,7 @@ export const registerPageStyles = {
         },
         '& button': {
           width: '420px',
+          height: '56px',
           margin: '48px 0 32px',
         },
         '&>div:nth-of-type(3)': {
@@ -151,7 +158,7 @@ export const registerPageStyles = {
           '& div': {
             width: '194px',
           },
-        },
+        }, // !
         '&>div:last-of-type': {
           display: 'flex',
           alignItems: 'center',
@@ -165,7 +172,7 @@ export const registerPageStyles = {
     },
   },
   '&>div:last-of-type': {
-    maxWidth: '720px',
+    width: '720px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
