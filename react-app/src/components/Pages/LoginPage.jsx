@@ -12,7 +12,7 @@ import { ReactComponent as GitHubIcon } from '../../assets/icons/GitHubIcon.svg'
 import { ReactComponent as IllustrationLogin } from '../../assets/svg/IllustrationLogin.svg';
 
 const LoginPage = () => {
-  const { handleSubmit, control } = useForm();
+  const { handleSubmit, control } = useForm({ reValidateMode: 'onSubmit' });
   const { errors } = useFormState({ control });
   const navigate = useNavigate();
   const onSubmit = (data) => {

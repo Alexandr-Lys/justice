@@ -75,6 +75,7 @@ const InputComponent = ({
             field,
           }) => (
             <TextField
+              {...props}
               onChange={(e) => field.onChange(e)}
               value={field.value}
               name={name}

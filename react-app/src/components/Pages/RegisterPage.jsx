@@ -17,7 +17,7 @@ const RegisterPage = () => {
     control,
     watch,
     getValues,
-  } = useForm();
+  } = useForm({ reValidateMode: 'onSubmit' });
   const navigate = useNavigate();
   const { errors } = useFormState({ control });
   const onSubmit = (data) => {
