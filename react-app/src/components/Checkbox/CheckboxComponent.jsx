@@ -13,8 +13,6 @@ const CheckboxComponent = ({
       name={name}
       render={({
         field,
-        // fieldState: { invalid, isTouched, isDirty },
-        // formState: { touchedFields, dirtyFields }
       }) => (
         <FormControlLabel
           control={<Checkbox sx={{ color: { color } }} onChange={(e) => { field.onChange(e); }} />}

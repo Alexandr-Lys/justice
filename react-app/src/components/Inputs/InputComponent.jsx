@@ -3,7 +3,7 @@ import { TextField, styled } from '@mui/material';
 import { Controller } from 'react-hook-form';
 
 const InputComponent = ({
-  disabled, label, name, control, errorText, validation,
+  disabled, label, name, control, errorText, validation, ...props
 }) => {
   const CssTextField = styled(TextField)({
     backgroundColor: 'transparent',
@@ -106,6 +106,7 @@ const InputComponent = ({
             field,
           }) => (
             <CssTextField
+              {...props}
               onChange={(e) => field.onChange(e)}
               value={field.value}
               helperText={errorText}
@@ -116,6 +117,12 @@ const InputComponent = ({
                 boxSizing: 'border-box',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 borderRadius: '3px',
+                '&>div:after': {
+                  display: 'none',
+                },
+                '&>label.Mui-focused': {
+                  color: '#FFFFFF',
+                },
                 '&:hover': { border: '1px solid rgba(255, 255, 255, 0.2)' },
               }}
             />

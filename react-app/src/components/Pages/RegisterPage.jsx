@@ -2,9 +2,11 @@ import React from 'react';
 import { useForm, useFormState } from 'react-hook-form';
 import { Box, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+
 import InputComponent from '../Inputs/InputComponent';
 import ButtonComponent from '../Buttons/ButtonComponent';
 import { mainStyles, registerPageStyles } from './MuiStyles';
+
 import { ReactComponent as GoogleIcon } from '../../assets/icons/GoogleIcon.svg';
 import { ReactComponent as GitHubIcon } from '../../assets/icons/GitHubIcon.svg';
 import { ReactComponent as IllustrationLogin } from '../../assets/svg/IllustrationLogin.svg';
@@ -80,6 +82,7 @@ const RegisterPage = () => {
             />
             <Box>
               <InputComponent
+                type="password"
                 label="Пароль"
                 name="password"
                 control={control}
@@ -88,6 +91,7 @@ const RegisterPage = () => {
                 validation={passwordValidation}
               />
               <InputComponent
+                type="password"
                 label="Подтвердите пароль"
                 name="confirmPassword"
                 control={control}
@@ -99,7 +103,7 @@ const RegisterPage = () => {
             <Box>
               <Typography variant="body2">
                 У вас уже есть учетная запись?
-                <Link to="/register"> Авторизоваться</Link>
+                <Link to="/login"> Авторизоваться</Link>
               </Typography>
             </Box>
           </Box>

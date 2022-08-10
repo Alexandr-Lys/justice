@@ -11,13 +11,12 @@ import { ReactComponent as GoogleIcon } from '../../assets/icons/GoogleIcon.svg'
 import { ReactComponent as GitHubIcon } from '../../assets/icons/GitHubIcon.svg';
 import { ReactComponent as IllustrationLogin } from '../../assets/svg/IllustrationLogin.svg';
 
-const LoginPage = ({ logIn }) => {
+const LoginPage = () => {
   const { handleSubmit, control } = useForm();
   const { errors } = useFormState({ control });
   const navigate = useNavigate();
   const onSubmit = (data) => {
     console.log(data);
-    logIn();
     navigate('/admin/markets');
   };
 
@@ -62,6 +61,7 @@ const LoginPage = ({ logIn }) => {
               validation={validationEmail}
             />
             <InputComponent
+              type="password"
               label="Пароль"
               name="password"
               control={control}
@@ -90,16 +90,3 @@ const LoginPage = ({ logIn }) => {
 
 export default LoginPage;
 
-// <form>
-//   <InputComponent text="Имя" />
-//   <InputComponent text="E-mail" />
-//   <Box>
-//     <InputComponent text="Пароль" />
-//     <InputComponent text="Повторите пароль" />
-//   </Box>
-//   <ButtonComponent color="disabled" />
-//   <Box>
-//
-//   </Box>
-//
-// </form>
