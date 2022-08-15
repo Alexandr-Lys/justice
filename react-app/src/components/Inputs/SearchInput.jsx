@@ -1,15 +1,13 @@
 import React from 'react';
 import {
   Autocomplete,
-  Box, GlobalStyles, TextField,
+  Box, GlobalStyles, TextField, Typography,
 } from '@mui/material';
-
-import CurrencyName from '../CurrencyName';
 
 import { ReactComponent as SearchIcon } from '../../assets/svg/SearchIcon.svg';
 
 const SearchInput = ({
-  currencyList, value, setValue, setOnFilter,
+  rows, value, setValue, setOnFilter,
 }) => (
   <>
     <GlobalStyles styles={{
@@ -76,13 +74,13 @@ const SearchInput = ({
         },
 
       }}
-      options={currencyList}
+      options={rows}
       getOptionLabel={(option) => option.fullName}
       onInputChange={
         (e) => {
           const currencyName = e.currentTarget.firstChild?.lastChild?.textContent;
           if (currencyName) {
-            setValue(currencyList.find((item) => currencyName === item.fullName));
+            setValue(rows.find((item) => currencyName === item.fullName));
             setOnFilter(true);
           } else {
             setOnFilter(false);
@@ -90,27 +88,55 @@ const SearchInput = ({
         }
       }
       value={value}
-      renderOption={(props, option) => (
-        <Box
-          component="li"
-          {...props}
-          sx={{
-            display: 'block !important',
-            backgroundColor: 'transparent',
-            ml: '16px',
-            width: '65px',
-            padding: '0 !important',
-            '& img': {
-              width: '24px',
-            },
-            '& p': {
-              fontSize: '0.8rem !important',
-            },
-          }}
-        >
-          <CurrencyName currency={option} />
-        </Box>
-      )}
+      renderOption={(props, option) => {
+        console.log(option);
+        return (
+          <Box
+            component="li"
+            {...props}
+            sx={{
+              display: 'block !important',
+              backgroundColor: 'transparent',
+              ml: '16px',
+              width: '65px',
+              padding: '0 !important',
+              '& img': {
+                width: '24px',
+              },
+              '& p': {
+                fontSize: '0.8rem !important',
+              },
+            }}
+          >
+            <Box sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              borderRadius: '3px',
+              backgroundColor: 'transparent',
+              padding: '2px',
+              '& h3': {
+                color: '#FFFFFF',
+                fontSize: '14px',
+              },
+              '& h4': {
+                color: '#FFFFFF',
+                opacity: '0.7',
+                fontSize: '11px',
+              },
+            }}
+            >
+              <img src={option.img} alt="" />
+              <Typography component="h3">
+                {option.shortName}
+              </Typography>
+              <Typography component="h4">
+                {option.fullName}
+              </Typography>
+            </Box>
+          </Box>
+        );
+      }}
       renderInput={(params) => (
         <>
           <SearchIcon />

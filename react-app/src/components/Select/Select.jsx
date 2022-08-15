@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import {
-  Autocomplete, Box, GlobalStyles, Input, InputAdornment, TextField,
+  Autocomplete, Box, GlobalStyles, Input, InputAdornment, TextField, Typography,
 } from '@mui/material';
-
-import CurrencyName from '../CurrencyName';
 
 import BTC from '../../assets/icons/criptorrency/Bitcoin.png';
 
@@ -116,7 +114,32 @@ const Select = ({ currencyList }) => {
                   },
                 }}
               >
-                <CurrencyName option={option} />
+                <Box sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  borderRadius: '3px',
+                  backgroundColor: 'transparent',
+                  padding: '2px',
+                  '& h3': {
+                    color: '#FFFFFF',
+                    fontSize: '14px',
+                  },
+                  '& h4': {
+                    color: '#FFFFFF',
+                    opacity: '0.7',
+                    fontSize: '11px',
+                  },
+                }}
+                >
+                  <img src={option.img} alt="" />
+                  <Typography component="h3">
+                    {option.shortName}
+                  </Typography>
+                  <Typography component="h4">
+                    {option.fullName}
+                  </Typography>
+                </Box>
               </Box>
             )}
             renderInput={(params) => (

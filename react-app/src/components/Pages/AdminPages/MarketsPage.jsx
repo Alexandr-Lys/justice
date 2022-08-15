@@ -8,7 +8,6 @@ import {
 
 import { useSelector } from 'react-redux';
 import SearchInput from '../../Inputs/SearchInput';
-import CurrencyName from '../../CurrencyName';
 import PaginationComponent from '../../PaginationComponent';
 import ButtonComponent from '../../Buttons/ButtonComponent';
 import { currencyList } from '../../../api/currency';
@@ -66,14 +65,40 @@ const MarketsPage = () => {
         .map((row) => (
           <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
             {columns.map((column) => {
-              console.log(column);
               const text = row[column.id];
               const color = getChangeValueAppearance(column, text);
               return (
                 <TableCell sx={{ color }} key={column.id} align={column.align} onClick={(e) => console.log(e.target)}>
                   {
                     text === 'currencyNameComponent'
-                      ? <CurrencyName currency={row} />
+                      ? (
+                        <Box sx={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '12px',
+                          borderRadius: '3px',
+                          backgroundColor: 'transparent',
+                          padding: '2px',
+                          '& h3': {
+                            color: '#FFFFFF',
+                            fontSize: '14px',
+                          },
+                          '& h4': {
+                            color: '#FFFFFF',
+                            opacity: '0.7',
+                            fontSize: '11px',
+                          },
+                        }}
+                        >
+                          <img src={row.img} alt="" />
+                          <Typography component="h3">
+                            {row.shortName}
+                          </Typography>
+                          <Typography component="h4">
+                            {row.fullName}
+                          </Typography>
+                        </Box>
+                      )
                       : text === 'tradeButton'
                         ? (
                           <ButtonComponent
@@ -94,7 +119,6 @@ const MarketsPage = () => {
       .map((row) => (
         <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
           {columns.map((column) => {
-            console.log(column);
             const text = row[column.id];
             const color = getChangeValueAppearance(column, text);
             return (
@@ -106,7 +130,34 @@ const MarketsPage = () => {
               >
                 {
                   text === 'currencyNameComponent'
-                    ? <CurrencyName currency={row} />
+                    ? (
+                      <Box sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '12px',
+                        borderRadius: '3px',
+                        backgroundColor: 'transparent',
+                        padding: '2px',
+                        '& h3': {
+                          color: '#FFFFFF',
+                          fontSize: '14px',
+                        },
+                        '& h4': {
+                          color: '#FFFFFF',
+                          opacity: '0.7',
+                          fontSize: '11px',
+                        },
+                      }}
+                      >
+                        <img src={row.img} alt="" />
+                        <Typography component="h3">
+                          {row.shortName}
+                        </Typography>
+                        <Typography component="h4">
+                          {row.fullName}
+                        </Typography>
+                      </Box>
+                    )
                     : text === 'tradeButton'
                       ? (
                         <ButtonComponent
@@ -147,7 +198,6 @@ const MarketsPage = () => {
       <Box>
         <Typography variant="h2" component="h1">Курсы валют</Typography>
         <SearchInput
-          currencyList={currencyList}
           searchCurrency={searchCurrency}
           rows={rows}
           setValue={setValue}
