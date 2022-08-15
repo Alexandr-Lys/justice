@@ -5,17 +5,20 @@ import {
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import 'typeface-inter';
 
-import { Theme } from './theme';
+import { useDispatch } from 'react-redux';
+import { Theme } from '../../theme/theme';
 import StartPage from '../Pages/StartPage';
 import RegisterPage from '../Pages/RegisterPage';
 import LoginPage from '../Pages/LoginPage';
 import { routing } from './routing';
 import MainPage from '../Pages/MainPage';
 import './App.css';
+import { getApiDataCurrency } from '../../store/asyncActions/data';
 
 const App = () => {
   const theme = createTheme(Theme);
-
+  const dispatch = useDispatch();
+  dispatch(getApiDataCurrency());
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

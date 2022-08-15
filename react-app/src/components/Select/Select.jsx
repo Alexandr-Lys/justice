@@ -5,7 +5,7 @@ import {
 
 import CurrencyName from '../CurrencyName';
 
-import BTC from '../../assets/icons/Bitcoin.png';
+import BTC from '../../assets/icons/criptorrency/Bitcoin.png';
 
 const Select = ({ currencyList }) => {
   const [image, setImage] = useState(BTC);
@@ -75,7 +75,7 @@ const Select = ({ currencyList }) => {
             onChange={(e) => {
               setImage(e.currentTarget.firstChild.firstChild.attributes[0].value);
             }}
-            defaultValue="BTC"
+            defaultValue={currencyList[0].shortName}
             sx={{
               p: '0',
               m: '0',
@@ -116,7 +116,7 @@ const Select = ({ currencyList }) => {
                   },
                 }}
               >
-                <CurrencyName image={option.img} currencyShort={option.label} />
+                <CurrencyName option={option} />
               </Box>
             )}
             renderInput={(params) => (

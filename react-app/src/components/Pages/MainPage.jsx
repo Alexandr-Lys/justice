@@ -12,7 +12,12 @@ const MainPage = () => (
     }}
     >
       <Sidebar />
-      <Box>
+      <Box sx={{
+        width: '100%',
+        // marginX: '48px',
+        height: '100vh',
+      }}
+      >
         <Outlet />
       </Box>
     </Box>

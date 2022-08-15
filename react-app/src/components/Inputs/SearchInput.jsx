@@ -8,29 +8,35 @@ import CurrencyName from '../CurrencyName';
 
 import { ReactComponent as SearchIcon } from '../../assets/svg/SearchIcon.svg';
 
-const SearchInput = ({ currencyList }) => (
+const SearchInput = ({
+  currencyList, value, setValue, setOnFilter,
+}) => (
   <>
     <GlobalStyles styles={{
+      '& input, & input::placeholder': {
+        color: '#FFFFFF !important',
+      },
       '&.Search': {
         width: '280px !important',
         left: '-12px !important',
-      },
-      '&.Search li': {
-        width: '248px',
-        height: '64px',
-        display: 'flex !important',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-      },
-      '&.css-17mla5t-MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected="true"]': {
-        backgroundColor: '#191F29 !important',
+        '&>div': {
+          backgroundColor: '#191F29',
+        },
       },
       '&.Search ul': {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        '& li': {
+          width: '248px',
+          height: '64px',
+          display: 'flex !important',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          backgroundColor: 'transparent !important',
+        },
       },
     }}
     />
@@ -72,6 +78,18 @@ const SearchInput = ({ currencyList }) => (
       }}
       options={currencyList}
       getOptionLabel={(option) => option.fullName}
+      onInputChange={
+        (e) => {
+          const currencyName = e.currentTarget.firstChild?.lastChild?.textContent;
+          if (currencyName) {
+            setValue(currencyList.find((item) => currencyName === item.fullName));
+            setOnFilter(true);
+          } else {
+            setOnFilter(false);
+          }
+        }
+      }
+      value={value}
       renderOption={(props, option) => (
         <Box
           component="li"
@@ -90,7 +108,7 @@ const SearchInput = ({ currencyList }) => (
             },
           }}
         >
-          <CurrencyName image={option.img} currencyShort={option.shortName} currencyFull={option.fullName} />
+          <CurrencyName currency={option} />
         </Box>
       )}
       renderInput={(params) => (
