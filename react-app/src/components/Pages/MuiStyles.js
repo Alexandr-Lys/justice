@@ -4,6 +4,24 @@ export const mainStyles = {
   margin: '0 auto',
 };
 
+export const currencyNameStyles = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px',
+  borderRadius: '3px',
+  backgroundColor: 'transparent',
+  padding: '2px',
+  '& h3': {
+    color: '#FFFFFF',
+    fontSize: '14px',
+  },
+  '& h4': {
+    color: '#FFFFFF',
+    opacity: '0.7',
+    fontSize: '11px',
+  },
+};
+
 export const loginPageStyles = {
   height: '100vh',
   display: 'flex',
@@ -181,5 +199,20 @@ export const registerPageStyles = {
     alignItems: 'center',
     justifyContent: 'center',
     background: 'rgba(255, 255, 255, 0.1)',
+  },
+};
+
+export const marketsPageStyles = {
+  height: '100vh',
+  paddingX: '48px',
+  '&>div:first-of-type': {
+    margin: '48px 0 32px',
+    height: '48px',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  '& tr>td:first-of-type>div': {
+    ...currencyNameStyles,
   },
 };

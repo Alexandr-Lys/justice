@@ -25,10 +25,18 @@ const SearchInput = ({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        maxHeight: '256px',
+        '&::-webkit-scrollbar': {
+          width: '4px',
+          height: '48px',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: 'rgba(255, 255, 255, 0.25)',
+          borderRadius: '29px',
+        },
         '& li': {
           width: '248px',
-          height: '64px',
+          minHeight: '64px !important',
           display: 'flex !important',
           alignItems: 'center',
           justifyContent: 'center',
@@ -88,55 +96,52 @@ const SearchInput = ({
         }
       }
       value={value}
-      renderOption={(props, option) => {
-        console.log(option);
-        return (
-          <Box
-            component="li"
-            {...props}
-            sx={{
-              display: 'block !important',
-              backgroundColor: 'transparent',
-              ml: '16px',
-              width: '65px',
-              padding: '0 !important',
-              '& img': {
-                width: '24px',
-              },
-              '& p': {
-                fontSize: '0.8rem !important',
-              },
-            }}
+      renderOption={(props, option) => (
+        <Box
+          component="li"
+          {...props}
+          sx={{
+            display: 'block !important',
+            backgroundColor: 'transparent',
+            ml: '16px',
+            width: '65px',
+            padding: '0 !important',
+            '& img': {
+              width: '24px',
+            },
+            '& p': {
+              fontSize: '0.8rem !important',
+            },
+          }}
+        >
+          <Box sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            borderRadius: '3px',
+            backgroundColor: 'transparent',
+            padding: '2px',
+            '& h3': {
+              color: '#FFFFFF',
+              fontSize: '14px',
+            },
+            '& h4': {
+              color: '#FFFFFF',
+              opacity: '0.7',
+              fontSize: '11px',
+            },
+          }}
           >
-            <Box sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              borderRadius: '3px',
-              backgroundColor: 'transparent',
-              padding: '2px',
-              '& h3': {
-                color: '#FFFFFF',
-                fontSize: '14px',
-              },
-              '& h4': {
-                color: '#FFFFFF',
-                opacity: '0.7',
-                fontSize: '11px',
-              },
-            }}
-            >
-              <img src={option.img} alt="" />
-              <Typography component="h3">
-                {option.shortName}
-              </Typography>
-              <Typography component="h4">
-                {option.fullName}
-              </Typography>
-            </Box>
+            <img src={option.img} alt="currency icon" />
+            <Typography component="h3">
+              {option.shortName}
+            </Typography>
+            <Typography component="h4">
+              {option.fullName}
+            </Typography>
           </Box>
-        );
-      }}
+        </Box>
+      )}
       renderInput={(params) => (
         <>
           <SearchIcon />

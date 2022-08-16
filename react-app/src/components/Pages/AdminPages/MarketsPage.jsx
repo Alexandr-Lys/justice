@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { useSelector } from 'react-redux';
 import {
   Typography, Box, Table,
   TableBody, TableCell,
@@ -6,62 +7,36 @@ import {
   TableRow, Paper,
 } from '@mui/material';
 
-import { useSelector } from 'react-redux';
 import SearchInput from '../../Inputs/SearchInput';
 import PaginationComponent from '../../Pagination/PaginationComponent';
 import ButtonComponent from '../../Buttons/ButtonComponent';
-import { currencyList } from '../../../api/currency';
+import { marketsPageStyles } from '../MuiStyles';
 
 const MarketsPage = () => {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [value, setValue] = useState(currencyList[0]);
-  const [onFilter, setOnFilter] = useState(false);
   const rows = useSelector((state) => state.currency);
   const columns = [
-    {
-      id: 'name', label: 'Название', minWidth: 170,
-    },
+    { id: 'name', label: 'Название', minWidth: 170 },
     { id: 'price', label: 'Цена', minWidth: 100 },
-    {
-      id: 'change',
-      label: 'Изм за 24ч',
-      minWidth: 170,
-    },
-    {
-      id: 'volume',
-      label: 'Объем за 24ч',
-      minWidth: 170,
-    },
-    {
-      id: 'capitalize',
-      label: 'Капитализация',
-      minWidth: 170,
-    },
-    {
-      id: 'trade',
-      minWidth: 170,
-    },
+    { id: 'change', label: 'Изм за 24ч', minWidth: 170 },
+    { id: 'volume', label: 'Объем за 24ч', minWidth: 170 },
+    { id: 'capitalize', label: 'Капитализация', minWidth: 170 },
+    { id: 'trade', minWidth: 170 },
   ];
-  const searchCurrency = () => rows.find((obj) => obj.fullName === value.fullName);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [value, setValue] = useState(rows[0]);
+  const [onFilter, setOnFilter] = useState(false);
 
-  const getChangeValueAppearance = (column, row) => {
-    if (column.id === 'change') {
-      switch (row[0]) {
-        case '-':
-          return '#EB6B6B';
-        default:
-          return '#6BEBA5';
-      }
-    } else {
-      return '#FFFFFF';
-    }
-  };
+  const searchCurrency = useMemo(() => rows.find((obj) => obj.fullName === value.fullName), [value]);
+  const paginationCount = useMemo(() => (onFilter ? 1 : rows.length), [onFilter, rows]);
+  const getChangeValueAppearance = (column, row) => ((column.id === 'change')
+    ? (row[0] === '-') ? '#EB6B6B' : '#6BEBA5'
+    : '#FFFFFF');
 
   const rowsRender = (stateFilter, rowsCurrency) => {
     if (stateFilter) {
       return rowsCurrency
-        .filter((row) => row.fullName === searchCurrency().fullName)
+        .filter((row) => row.fullName === searchCurrency.fullName)
         .map((row) => (
           <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
             {columns.map((column) => {
@@ -72,25 +47,8 @@ const MarketsPage = () => {
                   {
                     text === 'currencyNameComponent'
                       ? (
-                        <Box sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '12px',
-                          borderRadius: '3px',
-                          backgroundColor: 'transparent',
-                          padding: '2px',
-                          '& h3': {
-                            color: '#FFFFFF',
-                            fontSize: '14px',
-                          },
-                          '& h4': {
-                            color: '#FFFFFF',
-                            opacity: '0.7',
-                            fontSize: '11px',
-                          },
-                        }}
-                        >
-                          <img src={row.img} alt="" />
+                        <Box>
+                          <img src={row.img} alt="currency icon" />
                           <Typography component="h3">
                             {row.shortName}
                           </Typography>
@@ -129,44 +87,27 @@ const MarketsPage = () => {
                 onClick={(e) => console.log(e.target)}
               >
                 {
-                  text === 'currencyNameComponent'
-                    ? (
-                      <Box sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '12px',
-                        borderRadius: '3px',
-                        backgroundColor: 'transparent',
-                        padding: '2px',
-                        '& h3': {
-                          color: '#FFFFFF',
-                          fontSize: '14px',
-                        },
-                        '& h4': {
-                          color: '#FFFFFF',
-                          opacity: '0.7',
-                          fontSize: '11px',
-                        },
-                      }}
-                      >
-                        <img src={row.img} alt="" />
-                        <Typography component="h3">
-                          {row.shortName}
-                        </Typography>
-                        <Typography component="h4">
-                          {row.fullName}
-                        </Typography>
-                      </Box>
-                    )
-                    : text === 'tradeButton'
+                    text === 'currencyNameComponent'
                       ? (
-                        <ButtonComponent
-                          label="Торговать"
-                          color="secondary"
-                        />
+                        <Box>
+                          <img src={row.img} alt="currency icon" />
+                          <Typography component="h3">
+                            {row.shortName}
+                          </Typography>
+                          <Typography component="h4">
+                            {row.fullName}
+                          </Typography>
+                        </Box>
                       )
-                      : text
-                }
+                      : text === 'tradeButton'
+                        ? (
+                          <ButtonComponent
+                            label="Торговать"
+                            color="secondary"
+                          />
+                        )
+                        : text
+                  }
               </TableCell>
             );
           })}
@@ -183,22 +124,10 @@ const MarketsPage = () => {
   };
 
   return (
-    <Box sx={{
-      width: '100%', //!
-      height: '100vh',
-      '&>div:first-of-type': {
-        margin: '48px 0 32px',
-        height: '48px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      },
-    }}
-    >
+    <Box sx={marketsPageStyles}>
       <Box>
         <Typography variant="h2" component="h1">Курсы валют</Typography>
         <SearchInput
-          searchCurrency={searchCurrency}
           rows={rows}
           setValue={setValue}
           setOnFilter={setOnFilter}
@@ -230,7 +159,7 @@ const MarketsPage = () => {
       <PaginationComponent
         rowsPerPageOptions={[5, 10, 15]}
         component="div"
-        count={rows.length}
+        count={paginationCount}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

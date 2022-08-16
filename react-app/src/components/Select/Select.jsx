@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import {
-  Autocomplete, Box, GlobalStyles, Input, InputAdornment, TextField, Typography,
+  Autocomplete,
+  Box,
+  GlobalStyles,
+  Input,
+  InputAdornment,
+  TextField,
+  Typography,
 } from '@mui/material';
 
-import BTC from '../../assets/icons/criptorrency/Bitcoin.png';
+import { currencyNameStyles } from '../Pages/MuiStyles';
+
+import BTC from '../../assets/svg/criptorrency/CryptocurrencyBTC.svg';
 
 const Select = ({ currencyList }) => {
   const [image, setImage] = useState(BTC);
@@ -41,7 +49,7 @@ const Select = ({ currencyList }) => {
             },
           }}
         >
-          <img src={image} alt="" />
+          <img src={image} alt="currency icon" />
           <GlobalStyles styles={{
             '&.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper': {
               backgroundColor: '#191F29 !important',
@@ -85,7 +93,6 @@ const Select = ({ currencyList }) => {
                 color: '#FFFFFF',
                 fontSize: '0.9rem',
               },
-              // eslint-disable-next-line max-len
               '& .css-w2djx7-MuiAutocomplete-root': {
                 padding: '0',
               },
@@ -114,25 +121,8 @@ const Select = ({ currencyList }) => {
                   },
                 }}
               >
-                <Box sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  borderRadius: '3px',
-                  backgroundColor: 'transparent',
-                  padding: '2px',
-                  '& h3': {
-                    color: '#FFFFFF',
-                    fontSize: '14px',
-                  },
-                  '& h4': {
-                    color: '#FFFFFF',
-                    opacity: '0.7',
-                    fontSize: '11px',
-                  },
-                }}
-                >
-                  <img src={option.img} alt="" />
+                <Box sx={currencyNameStyles}>
+                  <img src={option.img} alt="currency icon" />
                   <Typography component="h3">
                     {option.shortName}
                   </Typography>

@@ -1,19 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import {
   ThemeProvider, createTheme,
 } from '@mui/material';
 import { Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import 'typeface-inter';
 
-import { useDispatch } from 'react-redux';
 import { Theme } from '../../theme/theme';
 import StartPage from '../Pages/StartPage';
 import RegisterPage from '../Pages/RegisterPage';
 import LoginPage from '../Pages/LoginPage';
 import { routing } from './routing';
 import MainPage from '../Pages/MainPage';
-import './App.css';
 import { getApiDataCurrency } from '../../store/asyncActions/data';
+import './App.css';
 
 const App = () => {
   const theme = createTheme(Theme);
