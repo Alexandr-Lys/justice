@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import {
-  Autocomplete, Box, GlobalStyles, Input, InputAdornment, TextField,
+  Autocomplete,
+  Box,
+  GlobalStyles,
+  Input,
+  InputAdornment,
+  TextField,
+  Typography,
 } from '@mui/material';
 
-import CurrencyName from '../CurrencyName';
+import { currencyNameStyles } from '../Pages/MuiStyles';
 
-import BTC from '../../assets/icons/Bitcoin.png';
+import BTC from '../../assets/svg/criptorrency/CryptocurrencyBTC.svg';
 
 const Select = ({ currencyList }) => {
   const [image, setImage] = useState(BTC);
@@ -43,7 +49,7 @@ const Select = ({ currencyList }) => {
             },
           }}
         >
-          <img src={image} alt="" />
+          <img src={image} alt="currency icon" />
           <GlobalStyles styles={{
             '&.css-1poimk-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper': {
               backgroundColor: '#191F29 !important',
@@ -75,7 +81,7 @@ const Select = ({ currencyList }) => {
             onChange={(e) => {
               setImage(e.currentTarget.firstChild.firstChild.attributes[0].value);
             }}
-            defaultValue="BTC"
+            defaultValue={currencyList[0].shortName}
             sx={{
               p: '0',
               m: '0',
@@ -87,7 +93,6 @@ const Select = ({ currencyList }) => {
                 color: '#FFFFFF',
                 fontSize: '0.9rem',
               },
-              // eslint-disable-next-line max-len
               '& .css-w2djx7-MuiAutocomplete-root': {
                 padding: '0',
               },
@@ -116,7 +121,15 @@ const Select = ({ currencyList }) => {
                   },
                 }}
               >
-                <CurrencyName image={option.img} currencyShort={option.label} />
+                <Box sx={currencyNameStyles}>
+                  <img src={option.img} alt="currency icon" />
+                  <Typography component="h3">
+                    {option.shortName}
+                  </Typography>
+                  <Typography component="h4">
+                    {option.fullName}
+                  </Typography>
+                </Box>
               </Box>
             )}
             renderInput={(params) => (

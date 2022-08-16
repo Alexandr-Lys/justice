@@ -1,36 +1,48 @@
 import React from 'react';
 import {
   Autocomplete,
-  Box, GlobalStyles, TextField,
+  Box, GlobalStyles, TextField, Typography,
 } from '@mui/material';
-
-import CurrencyName from '../CurrencyName';
 
 import { ReactComponent as SearchIcon } from '../../assets/svg/SearchIcon.svg';
 
-const SearchInput = ({ currencyList }) => (
+const SearchInput = ({
+  rows, value, setValue, setOnFilter,
+}) => (
   <>
     <GlobalStyles styles={{
+      '& input, & input::placeholder': {
+        color: '#FFFFFF !important',
+      },
       '&.Search': {
         width: '280px !important',
         left: '-12px !important',
-      },
-      '&.Search li': {
-        width: '248px',
-        height: '64px',
-        display: 'flex !important',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-      },
-      '&.css-17mla5t-MuiAutocomplete-listbox .MuiAutocomplete-option[aria-selected="true"]': {
-        backgroundColor: '#191F29 !important',
+        '&>div': {
+          backgroundColor: '#191F29',
+        },
       },
       '&.Search ul': {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        maxHeight: '256px',
+        '&::-webkit-scrollbar': {
+          width: '4px',
+          height: '48px',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: 'rgba(255, 255, 255, 0.25)',
+          borderRadius: '29px',
+        },
+        '& li': {
+          width: '248px',
+          minHeight: '64px !important',
+          display: 'flex !important',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          backgroundColor: 'transparent !important',
+        },
       },
     }}
     />
@@ -70,8 +82,20 @@ const SearchInput = ({ currencyList }) => (
         },
 
       }}
-      options={currencyList}
+      options={rows}
       getOptionLabel={(option) => option.fullName}
+      onInputChange={
+        (e) => {
+          const currencyName = e.currentTarget.firstChild?.lastChild?.textContent;
+          if (currencyName) {
+            setValue(rows.find((item) => currencyName === item.fullName));
+            setOnFilter(true);
+          } else {
+            setOnFilter(false);
+          }
+        }
+      }
+      value={value}
       renderOption={(props, option) => (
         <Box
           component="li"
@@ -90,7 +114,32 @@ const SearchInput = ({ currencyList }) => (
             },
           }}
         >
-          <CurrencyName image={option.img} currencyShort={option.shortName} currencyFull={option.fullName} />
+          <Box sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            borderRadius: '3px',
+            backgroundColor: 'transparent',
+            padding: '2px',
+            '& h3': {
+              color: '#FFFFFF',
+              fontSize: '14px',
+            },
+            '& h4': {
+              color: '#FFFFFF',
+              opacity: '0.7',
+              fontSize: '11px',
+            },
+          }}
+          >
+            <img src={option.img} alt="currency icon" />
+            <Typography component="h3">
+              {option.shortName}
+            </Typography>
+            <Typography component="h4">
+              {option.fullName}
+            </Typography>
+          </Box>
         </Box>
       )}
       renderInput={(params) => (

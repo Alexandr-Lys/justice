@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { Box } from '@mui/material';
+
 import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
 
@@ -12,7 +13,11 @@ const MainPage = () => (
     }}
     >
       <Sidebar />
-      <Box>
+      <Box sx={{
+        width: '100%',
+        height: '100vh',
+      }}
+      >
         <Outlet />
       </Box>
     </Box>

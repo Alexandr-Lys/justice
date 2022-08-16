@@ -7,7 +7,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import InputComponent from '../Inputs/InputComponent';
 import ButtonComponent from '../Buttons/ButtonComponent';
 import { mainStyles, registerPageStyles } from './MuiStyles';
-import { schemaValidation } from '../../form/formValidation';
+import { schemaValidationRegister } from '../../form/formValidation';
 
 import { ReactComponent as GoogleIcon } from '../../assets/icons/GoogleIcon.svg';
 import { ReactComponent as GitHubIcon } from '../../assets/icons/GitHubIcon.svg';
@@ -18,7 +18,7 @@ const RegisterPage = () => {
     handleSubmit,
     control,
     watch,
-  } = useForm({ reValidateMode: 'onSubmit', resolver: yupResolver(schemaValidation) });
+  } = useForm({ reValidateMode: 'onSubmit', resolver: yupResolver(schemaValidationRegister) });
   const navigate = useNavigate();
   const { errors } = useFormState({ control });
   const onSubmit = (data) => {

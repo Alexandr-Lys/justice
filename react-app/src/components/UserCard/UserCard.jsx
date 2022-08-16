@@ -20,17 +20,32 @@ const UserCard = ({ userName }) => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-    }}
-    >
-      <input ref={userPhotoRef} type="file" style={{ display: 'none' }} />
-      <CardContent sx={{
+      '&>div': {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
         gap: '24px',
-      }}
-      >
+        '&>div>button': {
+          backgroundColor: '#682DFE',
+          width: '24px',
+          height: '24px',
+          borderRadius: '100%',
+          minWidth: '0',
+          color: '#FFFFFF',
+          position: 'relative',
+          bottom: '175px',
+          left: '65px',
+          '&:hover': {
+            backgroundColor: '#682DFE',
+          },
+        },
+      },
+
+    }}
+    >
+      <input ref={userPhotoRef} type="file" style={{ display: 'none' }} />
+      <CardContent>
         <Box sx={{
           width: '96px',
           height: '96px',
@@ -53,23 +68,7 @@ const UserCard = ({ userName }) => {
           >
             <PersonFilled />
           </Box>
-          <Button
-            onClick={addingPhoto}
-            sx={{
-              backgroundColor: '#682DFE',
-              width: '24px',
-              height: '24px',
-              borderRadius: '100%',
-              minWidth: '0',
-              color: '#FFFFFF',
-              position: 'relative',
-              bottom: '175px',
-              left: '30px',
-              '&:hover': {
-                backgroundColor: '#682DFE',
-              },
-            }}
-          >
+          <Button onClick={addingPhoto}>
             <Typography>
               +
             </Typography>
