@@ -216,3 +216,40 @@ export const marketsPageStyles = {
     ...currencyNameStyles,
   },
 };
+
+export const profilePageStyles = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  '&>div:first-of-type': {
+    maxWidth: '913px',
+    borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+    '&>div': {
+      paddingX: '48px',
+      '& h1': {
+        marginY: '48px',
+      },
+      '& h2': {
+        margin: '56px 0 40px',
+      },
+      '& form': {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '30px',
+        '&:first-of-type': {
+          paddingBottom: '80px',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+        },
+        '&>div': {
+          width: '365px',
+          height: '56px',
+        },
+        '& button': {
+          height: '56px',
+        },
+      },
+    },
+  },
+  '&>div:last-of-type': {
+    margin: '32px 32px 0',
+  },
+};
