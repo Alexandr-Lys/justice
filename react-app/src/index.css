@@ -13,9 +13,6 @@ code {
     monospace;
 }
 
-.MuiAutocomplete-popper {
-  background-color: transparent !important;
-}
 @font-face {
   font-family: 'TT Firs Neue';
   src: url('assets/fonts/TTFirsNeue-Medium.woff2') format('woff2'),

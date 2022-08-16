@@ -8,7 +8,7 @@ import {
 
 import { useSelector } from 'react-redux';
 import SearchInput from '../../Inputs/SearchInput';
-import PaginationComponent from '../../PaginationComponent';
+import PaginationComponent from '../../Pagination/PaginationComponent';
 import ButtonComponent from '../../Buttons/ButtonComponent';
 import { currencyList } from '../../../api/currency';
 
