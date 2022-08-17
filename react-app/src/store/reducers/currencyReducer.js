@@ -1,6 +1,8 @@
+import { currencyList } from '../../api/currency';
+
 const ADD_DATA_CURRENCY = 'ADD_DATA_CURRENCY';
 
-const defaultState = [];
+const defaultState = currencyList;
 
 // eslint-disable-next-line default-param-last
 export const currencyReducer = (state = defaultState, action) => {

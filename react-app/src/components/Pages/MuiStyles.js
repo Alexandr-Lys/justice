@@ -22,6 +22,91 @@ export const currencyNameStyles = {
   },
 };
 
+export const selectInputStyles = {
+  pl: '10px',
+  width: '332px',
+  backgroundColor: 'transparent',
+  border: '1px solid rgba(255, 255, 255, 0.2)',
+  '&:before, &:after': {
+    display: 'none',
+  },
+  '& input': {
+    '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
+      appearance: 'none',
+      margin: 0,
+    },
+  },
+  '&.Mui-focused': {
+    borderColor: '#8391FF',
+  },
+  '&>div': {
+    width: '93px',
+    pr: '13px',
+    m: '0',
+    '& img': {
+      width: '24px',
+    },
+    '&>div': {
+      '& fieldset': {
+        display: 'none',
+      },
+      '& button': {
+        color: '#FFFFFF',
+      },
+    },
+  },
+};
+
+export const selectPopperStyles = {
+  '&.Select': {
+    width: '109px !important',
+    top: '8px !important',
+    left: '-12px !important',
+    '&>div': {
+      backgroundColor: '#191F29',
+    },
+  },
+  '&.Select ul': {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    maxHeight: '227px',
+    '&::-webkit-scrollbar': {
+      width: '4px',
+      height: '48px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      background: 'rgba(255, 255, 255, 0.25)',
+      borderRadius: '29px',
+    },
+    '& .MuiAutocomplete-option[aria-selected="true"]': {
+      background: 'transparent',
+    },
+    '& li': {
+      margin: 0,
+      width: '77px',
+      minHeight: '64px !important',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+      backgroundColor: 'transparent',
+      ml: '16px',
+      padding: '0 !important',
+      mb: '20px',
+      '&.Mui-focused': {
+        backgroundColor: 'transparent !important',
+      },
+      '& img': {
+        width: '24px',
+      },
+      '& p': {
+        fontSize: '0.8rem !important',
+      },
+    },
+  },
+};
+
 export const loginPageStyles = {
   height: '100vh',
   display: 'flex',
@@ -251,5 +336,53 @@ export const profilePageStyles = {
   },
   '&>div:last-of-type': {
     margin: '32px 32px 0',
+  },
+};
+
+export const convertPageStyles = {
+  width: '1088px',
+  margin: '0 64px 0 48px',
+  '& h1': {
+    paddingY: '48px',
+  },
+  '&>div': {
+    backgroundColor: '#191F29',
+    borderRadius: '3px',
+    padding: '48px',
+    '&>div:first-of-type': {
+      display: 'flex',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+      justifyContent: 'space-between',
+      paddingBottom: '48px',
+      alignItems: 'flex-end',
+      '&>div': {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+        '&>div': {
+          height: '56px',
+        },
+      },
+      '&>button': {
+        height: '56px',
+      },
+      '&>svg': {
+        paddingBottom: '4px',
+      },
+    },
+    '&>div:last-of-type': {
+      display: 'flex',
+      justifyContent: 'space-between',
+      paddingTop: '48px',
+      alignItems: 'flex-end',
+      '&>div': {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+        '&>div': {
+          height: '56px',
+        },
+      },
+    },
   },
 };
