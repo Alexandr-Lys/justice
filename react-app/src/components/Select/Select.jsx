@@ -22,6 +22,7 @@ const Select = ({
   autocompleteValue,
   autocompleteInput,
   image,
+  placeholderStyle,
   setImage,
   ...props
 }) => (
@@ -29,7 +30,10 @@ const Select = ({
     <GlobalStyles styles={selectPopperStyles} />
     <Input
       {...props}
-      sx={selectInputStyles}
+      sx={{
+        ...selectInputStyles,
+        ...placeholderStyle,
+      }}
       placeholder={placeholder}
       endAdornment={(
         <InputAdornment position="end">

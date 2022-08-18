@@ -15,3 +15,4 @@ export const currencyReducer = (state = defaultState, action) => {
 };
 
 export const addDataCurrencyAction = (apiData) => ({ type: ADD_DATA_CURRENCY, payload: apiData });
+
