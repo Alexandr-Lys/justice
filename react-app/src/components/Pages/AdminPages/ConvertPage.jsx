@@ -19,11 +19,11 @@ const ConvertPage = () => {
 
   const [controlValue, setControlValue] = useState(currencyList[0]);
   const [controlInput, setControlInput] = useState('BTC');
-  const [imageControl, setImageControl] = useState(currencyList[0].img);
+  const [imageControl, setImageControl] = useState(currencyList[0]?.img);
 
   const [disValue, setDisValue] = useState(currencyList[1]);
   const [disInput, setDisInput] = useState('ETH');
-  const [imageDis, setImageDis] = useState(currencyList[1].img);
+  const [imageDis, setImageDis] = useState(currencyList[1]?.img);
 
   return (
     <Box sx={convertPageStyles}>
