@@ -229,4 +229,3 @@ export const getCurrencyList = (apiData, list) => currencyList.map((object, inde
   };
 });
 
-// export const currencyLis = getCurrencyList(currencyApiData, currencyList);

@@ -10,6 +10,25 @@ export const Theme = {
         },
       },
     },
+    MuiAutocomplete: {
+      styleOverrides: {
+        noOptions: {
+          color: '#FFFFFF',
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          color: '#FFFFFF',
+          fontSize: '14px',
+          fontWeight: 500,
+        },
+        placeholder: {
+          color: '#FFFFFF',
+        },
+      },
+    },
     MuiTableCell: {
       styleOverrides: {
         body: {
@@ -94,6 +113,13 @@ export const Theme = {
     },
     subtitle: {
       color: '#8C939D',
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '14px',
+      lineHeight: '24px',
+      fontWeight: 400,
+    },
+    subtitleLight: {
+      color: '#FFFFFF',
       fontFamily: 'Inter, sans-serif',
       fontSize: '14px',
       lineHeight: '24px',

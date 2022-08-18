@@ -3,6 +3,7 @@ import {
   Autocomplete,
   Box, GlobalStyles, TextField, Typography,
 } from '@mui/material';
+import { currencyNameStyles } from '../Pages/MuiStyles';
 
 import { ReactComponent as SearchIcon } from '../../assets/svg/SearchIcon.svg';
 
@@ -42,6 +43,11 @@ const SearchInput = ({
           justifyContent: 'center',
           borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
           backgroundColor: 'transparent !important',
+          ml: '16px',
+          padding: '0 !important',
+          '& img': {
+            width: '24px',
+          },
         },
       },
     }}
@@ -97,41 +103,8 @@ const SearchInput = ({
       }
       value={value}
       renderOption={(props, option) => (
-        <Box
-          component="li"
-          {...props}
-          sx={{
-            display: 'block !important',
-            backgroundColor: 'transparent',
-            ml: '16px',
-            width: '65px',
-            padding: '0 !important',
-            '& img': {
-              width: '24px',
-            },
-            '& p': {
-              fontSize: '0.8rem !important',
-            },
-          }}
-        >
-          <Box sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            borderRadius: '3px',
-            backgroundColor: 'transparent',
-            padding: '2px',
-            '& h3': {
-              color: '#FFFFFF',
-              fontSize: '14px',
-            },
-            '& h4': {
-              color: '#FFFFFF',
-              opacity: '0.7',
-              fontSize: '11px',
-            },
-          }}
-          >
+        <Box component="li" {...props}>
+          <Box sx={currencyNameStyles}>
             <img src={option.img} alt="currency icon" />
             <Typography component="h3">
               {option.shortName}
@@ -145,11 +118,7 @@ const SearchInput = ({
       renderInput={(params) => (
         <>
           <SearchIcon />
-          <TextField
-            sx={{ backgroundColor: 'transparent' }}
-            {...params}
-            placeholder="Поиск валюты"
-          />
+          <TextField {...params} placeholder="Поиск валюты" />
         </>
       )}
     />
