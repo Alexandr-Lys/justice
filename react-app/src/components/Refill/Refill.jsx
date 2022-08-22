@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, useFormState } from 'react-hook-form';
 import {
-  Box, Step, StepLabel, Stepper, Typography,
+  Box, Typography,
 } from '@mui/material';
 
 import Navbar from '../Navbar/Navbar';
@@ -14,6 +14,7 @@ import RadioButton from '../Buttons/RadioButton';
 import ModalComponent from '../ModalComponent/ModalComponent';
 import InputComponent from '../Inputs/InputComponent';
 import { schemaValidationRefill } from '../../form/formValidation';
+import StepperComponent from '../Stepper/StepperComponent';
 
 import RUB from '../../assets/svg/criptorrency/CurrencyRUB.svg';
 import USD from '../../assets/svg/criptorrency/CurrencyUSD.svg';
@@ -72,22 +73,6 @@ const Refill = () => {
     ? navigate('/admin/wallet')
     : setActiveStep(activeStep - 1)
   );
-  const steps = [
-    {
-      label: 'Выбор валюты',
-      description: 'Выберите подходящую вам валюту',
-    },
-    {
-      label: 'Проверка',
-      description:
-        'Пройдите проверку персональных данных',
-    },
-    {
-      label: 'Пополнение',
-      description:
-        'После заполнения всех полей деньги поступят на счет',
-    },
-  ];
   return (
     <Box sx={refillPageStyles}>
       <Navbar />
@@ -169,18 +154,7 @@ const Refill = () => {
               )}
           </form>
           <ModalComponent open={modalOpen} onClose={handleClose} variant />
-          <Stepper activeStep={activeStep} orientation="vertical">
-            {steps.map((step) => (
-              <Step key={step.label}>
-                <StepLabel>
-                  <Box>
-                    <Typography variant="title">{step.label}</Typography>
-                    <Typography variant="subtitle">{step.description}</Typography>
-                  </Box>
-                </StepLabel>
-              </Step>
-            ))}
-          </Stepper>
+          <StepperComponent activeStep={activeStep} />
         </Box>
       </Box>
     </Box>

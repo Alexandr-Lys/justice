@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
-  Box, Step, StepLabel, Stepper, Typography,
+  Box, Typography,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useForm, useFormState } from 'react-hook-form';
@@ -15,6 +15,7 @@ import Select from '../Select/Select';
 import RadioButton from '../Buttons/RadioButton';
 import InputComponent from '../Inputs/InputComponent';
 import ModalComponent from '../ModalComponent/ModalComponent';
+import StepperComponent from '../Stepper/StepperComponent';
 
 import USD from '../../assets/svg/criptorrency/CurrencyUSD.svg';
 import RUB from '../../assets/svg/criptorrency/CurrencyRUB.svg';
@@ -87,22 +88,6 @@ const Output = () => {
     ? navigate('/admin/wallet')
     : setActiveStep(activeStep - 1)
   );
-  const steps = [
-    {
-      label: 'Выбор валюты',
-      description: 'Выберите подходящую вам валюту',
-    },
-    {
-      label: 'Проверка',
-      description:
-        'Пройдите проверку персональных данных',
-    },
-    {
-      label: 'Пополнение',
-      description:
-        'После заполнения всех полей деньги поступят на счет',
-    },
-  ];
   return (
     <Box sx={refillPageStyles}>
       <Navbar />
@@ -235,18 +220,7 @@ const Output = () => {
                 )}
           </form>
           <ModalComponent open={modalOpen} onClose={handleClose} />
-          <Stepper activeStep={activeStep} orientation="vertical">
-            {steps.map((step) => (
-              <Step key={step.label}>
-                <StepLabel>
-                  <Box>
-                    <Typography variant="title">{step.label}</Typography>
-                    <Typography variant="subtitle">{step.description}</Typography>
-                  </Box>
-                </StepLabel>
-              </Step>
-            ))}
-          </Stepper>
+          <StepperComponent activeStep={activeStep} />
         </Box>
       </Box>
     </Box>
