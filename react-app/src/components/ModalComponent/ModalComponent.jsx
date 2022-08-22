@@ -21,11 +21,13 @@ const style = {
   },
 };
 
-const ModalComponent = ({ open, variant }) => {
+const ModalComponent = ({ open, variant, ...props }) => {
   if (variant) {
     return (
       <Modal
+        {...props}
         open={open}
+        keepMounted
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -45,9 +47,9 @@ const ModalComponent = ({ open, variant }) => {
   }
   return (
     <Modal
+      {...props}
       open={open}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      keepMounted
     >
       <Box sx={style}>
         <Operation />

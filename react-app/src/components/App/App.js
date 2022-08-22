@@ -10,6 +10,8 @@ import { Theme } from '../../theme/theme';
 import StartPage from '../Pages/StartPage';
 import RegisterPage from '../Pages/RegisterPage';
 import LoginPage from '../Pages/LoginPage';
+import Refill from '../Refill/Refill';
+import Output from '../Output/Output';
 import { routing } from './routing';
 import MainPage from '../Pages/MainPage';
 import { getApiDataCurrency } from '../../store/asyncActions/data';
@@ -27,6 +29,8 @@ const App = () => {
             <Route path="/" element={<StartPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/refill" element={<Refill />} />
+            <Route path="/output" element={<Output />} />
             <Route
               path="/admin"
               element={(

@@ -1,3 +1,10 @@
+const BORDER = '1px solid rgba(255, 255, 255, 0.1)';
+const flexAlign = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+};
+
 export const mainStyles = {
   maxWidth: '1440px',
   height: '100vh',
@@ -22,13 +29,56 @@ export const currencyNameStyles = {
   },
 };
 
-export const selectInputStyles = {
-  pl: '10px',
-  width: '332px',
+export const selectStyles = {
+  justifyContent: 'center',
   backgroundColor: 'transparent',
+  '& input': {
+    '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
+      appearance: 'none',
+      margin: 0,
+    },
+  },
+  '&>div': {
+    border: '1px solid rgba(255, 255, 255, 0.2)',
+    pl: '10px',
+    width: '332px',
+    height: '56px',
+    '&.Mui-focused': {
+      borderColor: '#8391FF',
+    },
+    '&.Mui-error': {
+      border: '1px solid #D24242',
+    },
+    '&:before, &:after': {
+      display: 'none',
+    },
+    '&>div': {
+      width: '93px',
+      pr: '13px',
+      m: '0',
+      '& img': {
+        width: '24px',
+      },
+      '&>div': {
+        '& fieldset': {
+          display: 'none',
+        },
+        '& button': {
+          color: '#FFFFFF',
+        },
+      },
+    },
+  },
+};
+export const inputStyles = {
   border: '1px solid rgba(255, 255, 255, 0.2)',
-  '&:before, &:after': {
-    display: 'none',
+  height: '56px',
+  backgroundColor: 'transparent',
+  '&>label': {
+    top: '4px',
+  },
+  '&>label, &>label.Mui-focused': {
+    color: '#8C939D',
   },
   '& input': {
     '&::-webkit-inner-spin-button, &::-webkit-outer-spin-button': {
@@ -36,22 +86,30 @@ export const selectInputStyles = {
       margin: 0,
     },
   },
-  '&.Mui-focused': {
-    borderColor: '#8391FF',
-  },
   '&>div': {
-    width: '93px',
-    pr: '13px',
-    m: '0',
-    '& img': {
-      width: '24px',
+    '&.Mui-focused': {
+      borderColor: '#8391FF',
+    },
+    '&.Mui-error': {
+      border: '1px solid #D24242',
+    },
+    '&:before, &:after': {
+      display: 'none',
     },
     '&>div': {
-      '& fieldset': {
-        display: 'none',
+      width: '93px',
+      pr: '13px',
+      m: '0',
+      '& img': {
+        width: '24px',
       },
-      '& button': {
-        color: '#FFFFFF',
+      '&>div': {
+        '& fieldset': {
+          display: 'none',
+        },
+        '& button': {
+          color: '#FFFFFF',
+        },
       },
     },
   },
@@ -384,5 +442,138 @@ export const convertPageStyles = {
         },
       },
     },
+  },
+};
+
+export const walletPageStyles = {
+  maxWidth: '1104px',
+  paddingX: '48px',
+  '& table': {
+    width: '1104px',
+    '& tbody tr>td:first-of-type>div': {
+      ...currencyNameStyles,
+    },
+  },
+  '& thead': {
+    background: '#191F29',
+  },
+  '&>div:first-of-type': {
+    ...flexAlign,
+    borderBottom: BORDER,
+    '& h1': {
+      m: '48px 0 32px',
+    },
+    '&>div': {
+      display: 'flex',
+      gap: '24px',
+      '& button': {
+        height: '40px',
+        '&:first-of-type': {
+          width: '88px',
+        },
+        '&:last-of-type': {
+          width: '114px',
+        },
+      },
+    },
+  },
+  '&>div:nth-of-type(2)': {
+    ...flexAlign,
+    paddingY: '32px',
+    borderBottom: BORDER,
+    '&>div:first-of-type': {
+      '&>div': {
+        display: 'flex',
+        gap: '6px',
+        mt: '12px',
+      },
+    },
+  },
+  '&>div:nth-of-type(3)': {
+    '&>p': {
+      margin: '56px 0 24px',
+    },
+  },
+  '&>div': {
+    '&>p': {
+      margin: '96px 0 24px',
+    },
+  },
+
+};
+
+export const refillPageStyles = {
+  '&>div:last-of-type': {
+    paddingX: '288px',
+    '&>div:first-of-type': {
+      padding: '48px 0 32px',
+      borderBottom: BORDER,
+      ...flexAlign,
+    },
+    '&>div:last-of-type': {
+      display: 'flex',
+      '&>div.MuiStepper-root': {
+        pl: '48px',
+        pt: '56px',
+        gap: '56px',
+        '& .MuiStepConnector-root': {
+          display: 'none',
+        },
+        '& .MuiStep-root': {
+          borderBottom: BORDER,
+          '& .MuiStepLabel-root': {
+            p: 0,
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: '24px',
+            '&>span:last-of-type': {
+              paddingBottom: '56px',
+              '&>span>div': {
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
+};
+
+export const refillPageStepOneStyles = {
+  display: 'flex',
+  flexDirection: 'column',
+  borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+  pr: '283px',
+  '& h2': {
+    margin: '48px 0 40px',
+  },
+  '&>div': {
+    margin: '8px 0 40px',
+  },
+  '&>button': {
+    width: '138px',
+    height: '56px',
+    mt: '48px',
+  },
+};
+
+export const refillPageStepTwoStyles = {
+  width: '350px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '40px',
+  borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+  pr: '265px',
+  '&>h2': {
+    m: '48px 0 42px',
+  },
+  '& h3': {
+    mb: '5px',
+  },
+  '&>button': {
+    width: '189px',
+    height: '56px',
   },
 };
