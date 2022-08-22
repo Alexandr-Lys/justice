@@ -33,7 +33,6 @@ const ConvertPage = () => {
           <Box>
             <Typography variant="subtitle">Отдаю</Typography>
             <Select
-              type="number"
               currencyList={currencyList}
               defaultValue={currencyList[0]}
               onBlur={(e) => setAmount(e.target.value)}
@@ -44,6 +43,7 @@ const ConvertPage = () => {
               autocompleteInput={controlInput}
               image={imageControl}
               setImage={setImageControl}
+              typeSelect
             />
           </Box>
           <Swap onClick={() => {
@@ -75,6 +75,7 @@ const ConvertPage = () => {
                   textFillColor: '#FFFFFF',
                 },
               }}
+              typeSelect
             />
           </Box>
           <ButtonComponent

@@ -10,6 +10,14 @@ export const Theme = {
         },
       },
     },
+    MuiModal: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgba(17, 23, 33, 0.84)',
+          backdropFilter: 'blur(4px)',
+        },
+      },
+    },
     MuiAutocomplete: {
       styleOverrides: {
         noOptions: {
@@ -51,8 +59,27 @@ export const Theme = {
         },
       },
     },
+    MuiStepIcon: {
+      styleOverrides: {
+        root: {
+          color: 'rgba(255, 255, 255, 0.1)',
+        },
+      },
+    },
+    MuiStepLabel: {
+      styleOverrides: {
+        color: '#FFFFFF',
+      },
+    },
+    MuiStepper: {
+      action: 'none',
+    },
   },
   palette: {
+    action: {
+      disabledBackground: '#282B30',
+      disabled: '#8C8C8C',
+    },
     primary: {
       light: '#f50057',
       main: '#6D76F7',
@@ -74,6 +101,11 @@ export const Theme = {
       main: '#282B30',
       contrastText: '#8C8C8C',
     },
+    text: {
+      primary: '#FFFFFF',
+      main: '#FFFFFF',
+      grey: '#8C939D',
+    },
   },
   typography: {
     h1: {
@@ -88,6 +120,13 @@ export const Theme = {
       fontFamily: 'TT Firs Neue, sans-serif',
       fontSize: '36px',
       lineHeight: '48px',
+      fontWeight: 500,
+    },
+    h3: {
+      color: '#FFFFFF',
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '24px',
+      lineHeight: '24px',
       fontWeight: 500,
     },
     body1: {

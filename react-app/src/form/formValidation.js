@@ -45,3 +45,11 @@ export const schemaValidationPassword = yup.object({
     .oneOf([yup.ref('newPass'), null], 'Пароли не совпадают'),
 });
 
+export const schemaValidationRefill = yup.object({
+  cardNumber: yup.string().required('Номер карты не указан'),
+  date: yup.string().required('Дата не указана'),
+  cvc: yup.string().required('Код не указан'),
+  cardUser: yup.string().required('Владелец не указан'),
+  amount: yup.string().required('Количество не валидно'),
+});
+
