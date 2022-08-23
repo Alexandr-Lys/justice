@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Container } from '@mui/material';
 
 import { ReactComponent as Logo } from '../../assets/svg/Logo.svg';
@@ -6,7 +6,7 @@ import { ReactComponent as User } from '../../assets/svg/User.svg';
 import MetaMask from '../MetaMask/MetaMask';
 
 const Navbar = () => {
-  const [openMeta, setOpenMeta] = React.useState(null);
+  const [openMeta, setOpenMeta] = useState(null);
   const handleClick = (event) => {
     setOpenMeta(event.currentTarget);
   };
