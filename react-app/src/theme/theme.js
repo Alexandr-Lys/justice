@@ -18,6 +18,14 @@ export const Theme = {
         },
       },
     },
+    MuiPopover: {
+      styleOverrides: {
+        root: {
+          background: 'transparent',
+          backdropFilter: 'none',
+        },
+      },
+    },
     MuiAutocomplete: {
       styleOverrides: {
         noOptions: {
