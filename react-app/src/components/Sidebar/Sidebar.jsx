@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Box, List, ListItemButton, ListItemText,
 } from '@mui/material';
@@ -14,10 +14,13 @@ import { ReactComponent as Exit } from '../../assets/svg/login.svg';
 
 const Sidebar = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
+  useEffect(() => {
+    setSelectedIndex(Number(window.localStorage.getItem('selectedIndex')));
+  }, []);
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
+    window.localStorage.setItem('selectedIndex', index);
   };
-
   return (
     <Box sx={{
       width: '240px',

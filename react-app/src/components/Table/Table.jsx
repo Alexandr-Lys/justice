@@ -4,6 +4,9 @@ import {
 } from '@mui/material';
 import ButtonComponent from '../Buttons/ButtonComponent';
 import PaginationComponent from '../Pagination/PaginationComponent';
+import Status from '../Status/Status';
+
+import SWAP from '../../assets/svg/swapper.svg';
 
 const TableComponent = ({
   columns,
@@ -13,6 +16,7 @@ const TableComponent = ({
   filter,
   searchCurrency,
   paginationCount,
+  rowsPerPageOptions,
 }) => {
   const getChangeValueAppearance = (column, row) => ((column.id === 'change')
     ? (row[0] === '-') ? '#EB6B6B' : '#6BEBA5'
@@ -43,6 +47,36 @@ const TableComponent = ({
             </Typography>
           </Box>
         );
+      case 'currencyBoxGive':
+        return (
+          <Box>
+            <img src={row.giveImg} alt="currency icon" />
+            <Typography component="h3">
+              {row.shortNameGive}
+            </Typography>
+            <Typography component="h4">
+              {row.fullNameGive}
+            </Typography>
+          </Box>
+        );
+      case 'currencyBoxGet':
+        return (
+          <Box>
+            <img src={row.getImg} alt="currency icon" />
+            <Typography component="h3">
+              {row.shortNameGet}
+            </Typography>
+            <Typography component="h4">
+              {row.fullNameGet}
+            </Typography>
+          </Box>
+        );
+      case 'swap':
+        return (
+          <Box>
+            <img src={SWAP} alt="swap" />
+          </Box>
+        );
       case 'tradeButton':
         return (
           <ButtonComponent
@@ -56,6 +90,10 @@ const TableComponent = ({
             label="Вывод"
             color="secondary"
           />
+        );
+      case 'status':
+        return (
+          <Status text={row.statusText} />
         );
       default:
         return text;
@@ -113,7 +151,7 @@ const TableComponent = ({
       {pagination
         ? (
           <PaginationComponent
-            rowsPerPageOptions={[5, 10, 15]}
+            rowsPerPageOptions={rowsPerPageOptions}
             component="div"
             count={paginationCount}
             rowsPerPage={rowsPerPage}

@@ -6,16 +6,20 @@ import ButtonComponent from '../Buttons/ButtonComponent';
 
 import { ReactComponent as Logo } from '../../assets/svg/Logo.svg';
 import { ReactComponent as Currency } from '../../assets/svg/Currency.svg';
+import BG from '../../assets/svg/startPage/BG.svg';
+import CircleBig from '../../assets/svg/startPage/EllipseBig.svg';
+import CircleSmall from '../../assets/svg/startPage/EllipseSmall.svg';
 
 const StartPage = () => (
   <Box sx={{
-    backgroundImage: 'url(img/BG.svg)',
+    background: `url(${BG})`,
     width: '1440px',
     height: '900px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
+    overflowY: 'hidden',
     '& a': {
       textDecoration: 'none !important',
     },
@@ -36,12 +40,12 @@ const StartPage = () => (
       </Link>
     </Container>
     <Typography
-      variant="h3"
+      variant="h1"
       component="h1"
-      color="secondary.contrastText"
       sx={{
         width: '1008px',
         textAlign: 'center',
+        m: '148px 0 48px',
       }}
     >
       Присоединяйтесь к лучшей криптовалютной бирже
@@ -49,7 +53,36 @@ const StartPage = () => (
     <Link to="/login">
       <ButtonComponent label="Начать торговать" color="primary" size="large" />
     </Link>
-    <Currency style={{ backdropFilter: 'blur(37px)', borderRadius: '8px' }} />
+    <Box sx={{
+      borderRadius: '8px',
+      '&::before': {
+        content: `url(${CircleBig})`,
+        position: 'relative',
+        top: '85px',
+        right: '55px',
+      },
+      '&::after': {
+        content: `url(${CircleSmall})`,
+        position: 'relative',
+        bottom: '240px',
+        left: '985px',
+        zIndex: 2,
+      },
+    }}
+    >
+      <Box sx={{
+        backdropFilter: 'blur(37px)',
+        borderTop: '10px solid #ffffff17',
+        borderLeft: '10px solid #ffffff17',
+        borderRight: '10px solid #ffffff17',
+        borderRadius: '17px',
+        position: 'relative',
+        zIndex: '2',
+      }}
+      >
+        <Currency />
+      </Box>
+    </Box>
   </Box>
 );
 
