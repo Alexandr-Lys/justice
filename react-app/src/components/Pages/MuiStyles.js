@@ -147,7 +147,7 @@ export const selectPopperStyles = {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+      borderBottom: BORDER,
       backgroundColor: 'transparent',
       ml: '16px',
       padding: '0 !important',
@@ -365,7 +365,7 @@ export const profilePageStyles = {
   justifyContent: 'space-between',
   '&>div:first-of-type': {
     maxWidth: '913px',
-    borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+    borderRight: BORDER,
     '&>div': {
       paddingX: '48px',
       '& h1': {
@@ -380,7 +380,7 @@ export const profilePageStyles = {
         gap: '30px',
         '&:first-of-type': {
           paddingBottom: '80px',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          borderBottom: BORDER,
         },
         '&>div': {
           width: '365px',
@@ -409,7 +409,7 @@ export const convertPageStyles = {
     padding: '48px',
     '&>div:first-of-type': {
       display: 'flex',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+      borderBottom: BORDER,
       justifyContent: 'space-between',
       paddingBottom: '48px',
       alignItems: 'flex-end',
@@ -544,7 +544,7 @@ export const refillPageStyles = {
 export const refillPageStepOneStyles = {
   display: 'flex',
   flexDirection: 'column',
-  borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+  borderRight: BORDER,
   pr: '283px',
   '& h2': {
     margin: '48px 0 40px',
@@ -564,7 +564,7 @@ export const refillPageStepTwoStyles = {
   display: 'flex',
   flexDirection: 'column',
   gap: '40px',
-  borderRight: '1px solid rgba(255, 255, 255, 0.1)',
+  borderRight: BORDER,
   pr: '265px',
   '&>h2': {
     m: '48px 0 42px',
@@ -576,4 +576,36 @@ export const refillPageStepTwoStyles = {
     width: '189px',
     height: '56px',
   },
+};
+
+export const activityPage = {
+  maxWidth: '1104px',
+  paddingX: '48px',
+  '& table': {
+    width: '1104px',
+    '& tbody tr>td:first-of-type>div, & tbody tr>td:nth-of-type(3)>div': {
+      ...currencyNameStyles,
+    },
+  },
+  '& thead': {
+    background: '#191F29',
+  },
+  '& tbody': {
+    '& tr': {
+      '& td:nth-of-type(2)': {
+        p: 0,
+        '&>div': {
+          ...flexAlign,
+          '&>img': {
+            width: '16px',
+            height: '16px',
+          },
+        },
+      },
+    },
+  },
+  '& h1': {
+    m: '48px 0 32px',
+  },
+
 };
