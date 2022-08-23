@@ -611,3 +611,34 @@ export const activityPage = {
   },
 
 };
+
+export const metaMaskStyles = {
+  '& .MuiPaper-root': {
+    borderRadius: '10px',
+    width: '250px',
+    height: '320px',
+    backgroundColor: '#191F29',
+    zIndex: '2',
+    top: '80px !important',
+    left: '1230px !important',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    '&>div': {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '20px',
+      '&>div:first-of-type': {
+        width: '70px',
+        height: '70px',
+        '&>svg': {
+          width: '70px',
+          height: '70px',
+        },
+      },
+    },
+  },
+};
