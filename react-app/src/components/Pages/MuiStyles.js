@@ -71,7 +71,6 @@ export const selectStyles = {
   },
 };
 export const inputStyles = {
-  border: '1px solid rgba(255, 255, 255, 0.2)',
   height: '56px',
   backgroundColor: 'transparent',
   '&>label': {
@@ -87,6 +86,9 @@ export const inputStyles = {
     },
   },
   '&>div': {
+    '&.MuiInputBase-root': {
+      border: '1px solid rgba(255, 255, 255, 0.2)',
+    },
     '&.Mui-focused': {
       borderColor: '#8391FF',
     },

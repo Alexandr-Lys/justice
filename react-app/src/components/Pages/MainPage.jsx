@@ -14,7 +14,7 @@ const MainPage = () => (
     >
       <Sidebar />
       <Box sx={{
-        width: '100%',
+        width: '1201px',
         height: '100vh',
       }}
       >
