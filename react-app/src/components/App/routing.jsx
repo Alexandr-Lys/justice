@@ -4,6 +4,7 @@ import ProfilePage from '../Pages/AdminPages/ProfilePage';
 import ConvertPage from '../Pages/AdminPages/ConvertPage';
 import WalletPage from '../Pages/AdminPages/WalletPage';
 import ActivityPage from '../Pages/AdminPages/ActivityPage';
+import CurrencyInfo from '../CurrencyInfo/CurrencyInfo';
 
 export const routing = [
   {
@@ -29,6 +30,10 @@ export const routing = [
   {
     component: <ActivityPage />,
     path: 'activity',
+  },
+  {
+    component: <CurrencyInfo />,
+    path: 'info',
   },
 ];
 

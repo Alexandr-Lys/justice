@@ -30,3 +30,4 @@ export const receiveTransfer = (amount, currencyOf, currencyReceive) => (dispatc
       addDataTransferAction(response.data[currencyReceive], amount, currencyOf, currencyReceive),
     ));
 };
+

@@ -63,7 +63,8 @@ export const Theme = {
     MuiButton: {
       styleOverrides: {
         sizeLarge: {
-
+          padding: '15px 24px',
+          width: '100%',
         },
       },
     },
@@ -113,6 +114,10 @@ export const Theme = {
       primary: '#FFFFFF',
       main: '#FFFFFF',
       grey: '#8C939D',
+    },
+    buy: {
+      main: '#0ECB81',
+      contrastText: '#FFFFFF',
     },
   },
   typography: {
