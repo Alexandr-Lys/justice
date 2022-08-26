@@ -25,6 +25,21 @@ const CurrencyInfo = () => {
       ? array[index][4] > array[index - 1][4] ? 1 : -1
       : -1,
   ]);
+  const getArrayDates = () => {
+    const today = new Date();
+    const datesArray = [];
+    for (let i = 0; i < graphData.length; i++) {
+      const newDate = new Date(today.setDate(today.getDate() - 1));
+      datesArray.push(newDate);
+    }
+    return datesArray;
+  };
+  const arrayDates = getArrayDates().map((item) => `${item.toDateString().split(' ')[2]} ${item.toDateString().split(' ')[1]}`);
+  const max = graphData.map((item, index) => [
+    index,
+    +item[4],
+  ]);
+  console.log(max);
   const colorData = volume[volume.length - 1][2] === 1 ? '#0ECB81' : '#EB6B6B';
   const option = {
     visualMap: {
@@ -160,6 +175,77 @@ const CurrencyInfo = () => {
       },
     ],
   };
+  const optionLine = {
+    tooltip: {
+      trigger: 'axis',
+      formatter: '{c} <br/>',
+    },
+    dataZoom: {
+      type: 'inside',
+      realtime: true,
+    },
+    visualMap: {
+      show: false,
+      type: 'continuous',
+      seriesIndex: 0,
+      min: 0,
+      max: 400,
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: { show: false },
+      splitLine: {
+        show: true,
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.1)',
+        },
+      },
+      axisPointer: {
+        label: {
+          show: false,
+        },
+        show: true,
+      },
+      data: arrayDates,
+    },
+    yAxis: {
+      type: 'value',
+      position: 'right',
+      scale: true,
+      splitLine: {
+        show: true,
+        axisLine: { show: false },
+        axisTick: { show: false },
+        axisLabel: { show: false },
+        lineStyle: {
+          color: 'rgba(255, 255, 255, 0.1)',
+        },
+      },
+    },
+    series: [
+      {
+        showSymbol: false,
+        data: max,
+        type: 'line',
+        areaStyle: {
+          color: '#0ECB81',
+          opacity: '0.15',
+        },
+        itemStyle: {
+          color: '#0ECB81',
+        },
+        emphasis: {
+          itemStyle: {
+            color: '#0ECB81',
+            borderColor: '#0ECB81',
+          },
+        },
+      },
+    ],
+  };
   const todayGraphData = graphData[graphData.length - 1];
 
   const currentCryptoData = currencyStore.find((item) => item.shortName === graphStore.crypto);
@@ -291,17 +377,33 @@ const CurrencyInfo = () => {
               </Box>
             </Box>
           </Box>
-          <ReactECharts
-            option={option}
-            style={{
-              width: '875px',
-              height: '681px',
-              position: 'absolute',
-              top: '10px',
-              left: '-86px',
-              zIndex: 1,
-            }}
-          />
+          {false
+            ? (
+              <ReactECharts
+                option={option}
+                style={{
+                  width: '875px',
+                  height: '681px',
+                  position: 'absolute',
+                  top: '10px',
+                  left: '-86px',
+                  zIndex: 1,
+                }}
+              />
+            )
+            : (
+              <ReactECharts
+                option={optionLine}
+                style={{
+                  width: '875px',
+                  height: '681px',
+                  position: 'absolute',
+                  top: '10px',
+                  left: '-86px',
+                  zIndex: 1,
+                }}
+              />
+            )}
         </Box>
       </Box>
       <Box>
