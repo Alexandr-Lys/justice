@@ -34,12 +34,15 @@ const CurrencyInfo = () => {
     }
     return datesArray;
   };
-  const arrayDates = getArrayDates().map((item) => `${item.toDateString().split(' ')[2]} ${item.toDateString().split(' ')[1]}`);
+  const arrayDates = getArrayDates().map(
+    (item) => `${item.toDateString().split(' ')[2]} ${item.toDateString().split(' ')[1]}`,
+  );
   const max = graphData.map((item, index) => [
     index,
     +item[4],
+    arrayDates[index],
   ]);
-  console.log(max);
+  console.log(arrayDates);
   const colorData = volume[volume.length - 1][2] === 1 ? '#0ECB81' : '#EB6B6B';
   const option = {
     visualMap: {
@@ -178,7 +181,12 @@ const CurrencyInfo = () => {
   const optionLine = {
     tooltip: {
       trigger: 'axis',
-      formatter: '{c} <br/>',
+      formatter: (params) => `${params[0].data[1]}<br />${params[0].data[2]}`,
+      backgroundColor: '#272D37',
+      borderColor: '#272D37',
+      textStyle: {
+        color: '#FFFFFF',
+      },
     },
     dataZoom: {
       type: 'inside',
@@ -393,6 +401,7 @@ const CurrencyInfo = () => {
             )
             : (
               <ReactECharts
+                onClick={() => console.log(1)}
                 option={optionLine}
                 style={{
                   width: '875px',
