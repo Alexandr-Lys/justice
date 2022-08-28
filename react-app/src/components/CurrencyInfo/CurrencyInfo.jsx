@@ -401,7 +401,6 @@ const CurrencyInfo = () => {
             )
             : (
               <ReactECharts
-                onClick={() => console.log(1)}
                 option={optionLine}
                 style={{
                   width: '875px',
