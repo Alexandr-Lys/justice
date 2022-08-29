@@ -41,7 +41,6 @@ export const selectStyles = {
   '&>div': {
     border: '1px solid rgba(255, 255, 255, 0.2)',
     pl: '10px',
-    width: '332px',
     height: '56px',
     '&.Mui-focused': {
       borderColor: '#8391FF',
@@ -65,6 +64,9 @@ export const selectStyles = {
         },
         '& button': {
           color: '#FFFFFF',
+        },
+        '& input': {
+          width: '40px !important',
         },
       },
     },
@@ -348,7 +350,6 @@ export const registerPageStyles = {
 };
 
 export const marketsPageStyles = {
-  height: '100vh',
   paddingX: '48px',
   '&>div:first-of-type': {
     margin: '48px 0 32px',
@@ -639,6 +640,105 @@ export const metaMaskStyles = {
           height: '70px',
         },
       },
+    },
+  },
+};
+
+export const currencyInfoStyles = {
+  display: 'flex',
+  '&>div:first-of-type': {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    paddingX: '48px',
+    borderRight: BORDER,
+    '&>div:first-of-type': {
+      pt: '14px',
+      pb: '24px',
+      height: '40px',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      borderBottom: BORDER,
+      '&>div:first-of-type': {
+        pr: '24px',
+        height: '40px',
+        borderRight: BORDER,
+        '&>h1': {
+          lineHeight: '40px',
+          fontSize: '16px',
+        },
+      },
+    },
+    '&>div:last-of-type': {
+      pt: '24px',
+      position: 'relative',
+      '&>div:first-of-type': {
+        position: 'relative',
+        zIndex: 2,
+        ...flexAlign,
+        maxWidth: '761px',
+        justifyContent: 'start',
+        '&>div:first-of-type': {
+          ...flexAlign,
+          width: '524px',
+          pr: '38px',
+          justifyContent: 'space-between',
+          '& div': {
+            ...flexAlign,
+            gap: '4px',
+          },
+        },
+        '&>div:last-of-type': {
+          ...flexAlign,
+          borderLeft: BORDER,
+          '&>div': {
+            ...flexAlign,
+            gap: '16px',
+            '&>p': {
+              '&.active': {
+                color: '#AFB4FF',
+              },
+              cursor: 'pointer',
+            },
+          },
+          '&>p': {
+            pr: '16px',
+            pl: '24px',
+          },
+        },
+      },
+    },
+  },
+  '&>div:last-of-type': {
+    p: '32px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    '&>svg': {
+      m: '32px auto',
+    },
+    '& .balance': {
+      width: '100%',
+      ...flexAlign,
+      pt: '16px',
+      pb: '48px',
+      justifyContent: 'space-between',
+    },
+    '& .tags': {
+      pt: '16px',
+      pb: '32px',
+      pr: '100px',
+      ...flexAlign,
+      gap: '8px',
+      maxWidth: '188px',
+      '& p': {
+        cursor: 'pointer',
+      },
+    },
+    '& .buy-button': {
+      mb: '32px',
     },
   },
 };

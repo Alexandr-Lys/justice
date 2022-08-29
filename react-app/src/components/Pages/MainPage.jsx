@@ -16,7 +16,6 @@ const MainPage = () => (
       <Sidebar />
       <Box sx={{
         width: '1201px',
-        height: '100vh',
       }}
       >
         <Outlet />

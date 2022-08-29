@@ -17,6 +17,7 @@ const TableComponent = ({
   searchCurrency,
   paginationCount,
   rowsPerPageOptions,
+  onClickFunction,
 }) => {
   const getChangeValueAppearance = (column, row) => ((column.id === 'change')
     ? (row[0] === '-') ? '#EB6B6B' : '#6BEBA5'
@@ -80,6 +81,7 @@ const TableComponent = ({
       case 'tradeButton':
         return (
           <ButtonComponent
+            onClick={onClickFunction}
             label="Торговать"
             color="secondary"
           />
@@ -117,7 +119,6 @@ const TableComponent = ({
             key={column.id}
             sx={{ color }}
             align={column.align}
-            onClick={(e) => console.log(e.target)}
           >
             {getRowsContent(text, row)}
           </TableCell>
