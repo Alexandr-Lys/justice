@@ -25,11 +25,6 @@ export const graphReducer = (state = defaultState, action) => {
   }
 };
 
-export const addDataCryptoAction = (crypto) => ({
-  type: ADD_DATA_CRYPTO,
-  payload: crypto,
-});
-
 export const addDataCryptoGraphAction = async (crypto, currency, interval, limit) => {
   const getCryptoGraph = await axios.get(
     `https://www.binance.com/api/v3/uiKlines?limit=${limit}&symbol=${crypto}${currency}&interval=${interval}`,

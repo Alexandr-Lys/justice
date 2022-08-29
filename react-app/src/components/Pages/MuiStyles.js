@@ -712,7 +712,7 @@ export const currencyInfoStyles = {
     },
   },
   '&>div:last-of-type': {
-    paddingX: '32px',
+    p: '32px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
