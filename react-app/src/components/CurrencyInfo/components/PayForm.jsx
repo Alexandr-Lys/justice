@@ -126,7 +126,7 @@ const PayForm = ({
           setAutocompleteInput={setDisInput}
           image={imageDis}
           setImage={setImageDis}
-          placeholder={cryptoValue}
+          placeholder={cryptoValue.toString()}
           placeholderStyle={{
             '& input': {
               '&::placeholder': {
