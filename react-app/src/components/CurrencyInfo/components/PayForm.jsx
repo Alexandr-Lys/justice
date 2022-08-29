@@ -41,6 +41,53 @@ const PayForm = ({
 
   const [cryptoValue, setCryptoValue] = useState(0);
 
+  const swapInputs = () => {
+    const temp = {
+      controlValue,
+      imageControl,
+    };
+    setControlValue(disValue);
+    setDisValue(temp.controlValue);
+    setImageControl(imageDis);
+    setImageDis(temp.imageControl);
+  };
+
+  const onTagClick = (e) => {
+    if (e.target.innerHTML.length < 6) {
+      const inputValue = e.target
+        .parentElement
+        .parentElement
+        .previousSibling
+        .lastChild
+        .firstChild
+        .firstChild
+        .value;
+      if (inputValue) {
+        e.target
+          .parentElement
+          .parentElement
+          .previousSibling
+          .lastChild
+          .firstChild
+          .firstChild
+          .value = '';
+      }
+      const result = (Number(e.target.innerHTML.replace('%', '')) * balance) / 100;
+      setTotalValue(result.toFixed(2));
+      setCryptoValue(result / cryptoToCurrency);
+    }
+  };
+
+  const payCrypto = () => {
+    const result = balance - totalValue;
+    if (result >= 0) {
+      setBalance(result);
+      setStatus(1);
+    } else {
+      setStatus(0);
+    }
+  };
+
   return (
     <Box>
       <Box>
@@ -64,17 +111,7 @@ const PayForm = ({
           typeSelect
         />
       </Box>
-      <Swap onClick={() => {
-        const temp = {
-          controlValue,
-          imageControl,
-        };
-        setControlValue(disValue);
-        setDisValue(temp.controlValue);
-        setImageControl(imageDis);
-        setImageDis(temp.imageControl);
-      }}
-      />
+      <Swap onClick={swapInputs} />
       <Box>
         <Typography variant="subtitle">Получаю</Typography>
         <Select
@@ -103,31 +140,7 @@ const PayForm = ({
       </Box>
       <Box
         className="tags"
-        onClick={(e) => {
-          if (e.target.innerHTML.length < 6) {
-            const inputValue = e.target
-              .parentElement
-              .parentElement
-              .previousSibling
-              .lastChild
-              .firstChild
-              .firstChild
-              .value;
-            if (inputValue) {
-              e.target
-                .parentElement
-                .parentElement
-                .previousSibling
-                .lastChild
-                .firstChild
-                .firstChild
-                .value = '';
-            }
-            const result = (Number(e.target.innerHTML.replace('%', '')) * balance) / 100;
-            setTotalValue(result.toFixed(2));
-            setCryptoValue(result / cryptoToCurrency);
-          }
-        }}
+        onClick={onTagClick}
       >
         <Tag tagValue="25%" />
         <Tag tagValue="50%" />
@@ -163,15 +176,7 @@ const PayForm = ({
         size="large"
         color="buy"
         label={`Купить ${currentCryptoData.shortName}`}
-        onClick={() => {
-          const result = balance - totalValue;
-          if (result >= 0) {
-            setBalance(result);
-            setStatus(1);
-          } else {
-            setStatus(0);
-          }
-        }}
+        onClick={payCrypto}
       />
       <Notification status={status} size="small" />
     </Box>

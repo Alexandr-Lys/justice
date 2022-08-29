@@ -130,7 +130,7 @@ const CurrencyInfo = () => {
             </Box>
             <Box>
               <Typography variant="body1" color="text.grey">Время</Typography>
-              <Box onClick={(e) => onIntervalClick(e)}>
+              <Box onClick={onIntervalClick}>
                 <Typography id="30m" variant="body1" color="text.grey">30М</Typography>
                 <Typography id="1h" variant="body1" color="text.grey">1Ч</Typography>
                 <Typography id="1d" variant="body1" color="text.grey" className="active">1Д</Typography>
