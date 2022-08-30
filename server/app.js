@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-const passport = require('passport')
 
 const authRoutes = require('./routes/auth')
 const keys = require('./config/keys')
@@ -12,9 +11,6 @@ const mongoose = require('mongoose')
 mongoose.connect(keys.mongoURI)
   .then(() => console.log('Success'))
   .catch((err) => console.log(err));
-
-app.use(passport.initialize())
-require('./middleware/passport')(passport)
 
 app.use(require('morgan')('dev'))
 app.use(bodyParser.urlencoded({extended: true}))
