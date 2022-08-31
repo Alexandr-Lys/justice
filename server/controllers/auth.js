@@ -13,7 +13,7 @@ module.exports.login = async (req, res) => {
       const token = jwt.sign({
         email: candidate.email,
         userId: candidate._id
-      }, keys.jwt, {expiresIn: 60*60})
+      }, keys.jwt, {expiresIn: 10}) //60*60
 
       res.status(200).json({
         token: `Bearer ${token}`
@@ -25,7 +25,7 @@ module.exports.login = async (req, res) => {
     }
   } else {
     res.status(404).json({
-      message: 'Подьзователь не найден'
+      message: 'Пользователь не найден'
     })
   }
 }
