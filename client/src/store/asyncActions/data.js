@@ -5,7 +5,7 @@ import { currencyList, getCurrencyList } from '../../api/currency';
 import { addDataTransferAction } from '../reducers/convertReducer';
 import { addDataHistoryAction } from '../actions/actions';
 
-export const getApiDataCurrency = () => (dispatch) => {
+export const getApiDataCurrency = (dispatch) => {
   axios.get(
     // eslint-disable-next-line max-len
     'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,XRP,ADA,USDT,LTC,ETN,ETC,NEO,LINK,ENG,ARNX,XLM,RVN,NPXS,PIVX,NAS,PPC&tsyms=RUB',

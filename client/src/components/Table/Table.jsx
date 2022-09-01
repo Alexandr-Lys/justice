@@ -132,17 +132,19 @@ const TableComponent = ({
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table>
           <TableHead>
-            {columns.map((column) => (
-              <TableCell
-                key={column.id}
-                style={{
-                  top: 57,
-                  minWidth: column.minWidth,
-                }}
-              >
-                {column.label}
-              </TableCell>
-            ))}
+            <TableRow>
+              {columns.map((column) => (
+                <TableCell
+                  key={column.id}
+                  style={{
+                    top: 57,
+                    minWidth: column.minWidth,
+                  }}
+                >
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
           </TableHead>
           <TableBody>
             {rowsFilter(filter, rows).map(rowsMapping)}

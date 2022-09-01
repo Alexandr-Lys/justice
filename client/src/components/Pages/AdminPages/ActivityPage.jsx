@@ -58,9 +58,8 @@ const ActivityPage = () => {
         rows={rows}
         columns={columns}
         pagination
-        paginationCount={1}
-        page={1}
-        rowsPerPageOptions={[1]}
+        paginationCount={rows.length}
+        rowsPerPageOptions={[5, 10, 15]}
       />
     </Box>
   );
