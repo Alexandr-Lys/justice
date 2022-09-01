@@ -33,9 +33,7 @@ export const receiveTransfer = (amount, currencyOf, currencyReceive) => (dispatc
 };
 
 export const addHistory = (userId, dispatch) => {
-  axios.post(
-    `http://${process.env.REACT_APP_HOST}/api/history/`,
-    { userId },
-  ).then((response) => dispatch(addDataHistoryAction(response.data)));
+  axios.get(`http://${process.env.REACT_APP_HOST}/api/history/${userId}`)
+    .then((response) => dispatch(addDataHistoryAction(response.data)));
 };
 

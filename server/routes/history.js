@@ -2,7 +2,7 @@ const express = require('express')
 const controller = require('../controllers/history')
 const router = express.Router()
 
-router.post('/', controller.getAll)
-router.post('/create', controller.create)
+router.get('/:id', controller.getAll)
+router.post('/', controller.create)
 
 module.exports = router

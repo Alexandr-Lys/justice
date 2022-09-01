@@ -16,7 +16,6 @@ const ActivityPage = () => {
   }, []);
   const history = useSelector((state) => state.history);
   const currencyList = useSelector((state) => state.currency);
-  console.log(history);
   const columns = [
     { id: 'activeGive', label: 'Актив', minWidth: '120px' },
     { id: 'swapImg' },

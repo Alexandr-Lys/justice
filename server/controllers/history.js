@@ -3,7 +3,6 @@ const errorHandler = require('../utils/errorHandler')
 
 const randomStatus = () => {
   const random = Number((Math.random()*100).toFixed(0))
-  console.log(random)
   if(random<30){
     return 'Отклонено'
   }else if(random<60){
@@ -14,10 +13,9 @@ const randomStatus = () => {
 }
 
 module.exports.getAll = async (req, res) => {
-  console.log(req)
   try {
     const history = await History.find({
-      user: req.body.userId,
+      user: req.params.id,
     })
     res.status(200).json(history)
   } catch (e) {

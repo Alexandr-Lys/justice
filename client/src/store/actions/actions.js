@@ -11,13 +11,3 @@ export const addUserDataAction = (userData) => (
 );
 
 export const addDataHistoryAction = (data) => ({ type: ADD_DATA_HISTORY, payload: data });
-
-// export const addDataHistoryAction = async (userId) => {
-//   const history = await getPayHistory(userId);
-//   return (
-//     {
-//       type: ADD_DATA_HISTORY,
-//       payload: history,
-//     }
-//   );
-// };
