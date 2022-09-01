@@ -7,6 +7,7 @@ import Select from '../../Select/Select';
 import Tag from '../../Tags/Tag';
 import ButtonComponent from '../../Buttons/ButtonComponent';
 import Notification from '../../Notification/Notification';
+import { addPayHistory } from '../../../api/history';
 
 import { ReactComponent as Swap } from '../../../assets/svg/Swap.svg';
 
@@ -16,6 +17,7 @@ const PayForm = ({
   currencyStore,
   cryptoToCurrency,
 }) => {
+  const userId = window.localStorage.getItem('userId');
   const dispatch = useDispatch();
   const { interval, limit } = useSelector((state) => state.graph);
   const [controlValue, setControlValue] = useState(currentCurrencyData);
@@ -54,35 +56,30 @@ const PayForm = ({
 
   const onTagClick = (e) => {
     if (e.target.innerHTML.length < 6) {
-      const inputValue = e.target
+      const result = (Number(e.target.innerHTML.replace('%', '')) * balance) / 100;
+      const input = e.target
         .parentElement
         .parentElement
         .previousSibling
         .lastChild
         .firstChild
-        .firstChild
-        .value;
-      if (inputValue) {
-        e.target
-          .parentElement
-          .parentElement
-          .previousSibling
-          .lastChild
-          .firstChild
-          .firstChild
-          .value = '';
-      }
-      const result = (Number(e.target.innerHTML.replace('%', '')) * balance) / 100;
-      setTotalValue(result.toFixed(2));
+        .firstChild;
+      input.value = (result / cryptoToCurrency).toFixed(2);
       setCryptoValue(result / cryptoToCurrency);
+      setTotalValue(result);
     }
   };
 
-  const payCrypto = () => {
+  const payCrypto = async () => {
     const result = balance - totalValue;
     if (result >= 0) {
       setBalance(result);
       setStatus(1);
+      const date = new Date();
+      const dateString = date.toLocaleDateString().split('.').reverse().join('.');
+      const timeString = date.toLocaleTimeString().slice(0, -3);
+      const time = `${dateString} / ${timeString}`;
+      await addPayHistory(totalValue, cryptoValue, controlInput, disInput, time, userId);
     } else {
       setStatus(0);
     }
@@ -117,6 +114,7 @@ const PayForm = ({
         <Select
           onBlur={(e) => {
             setTotalValue(e.target.value * cryptoToCurrency);
+            setCryptoValue(Number(e.target.value));
           }}
           currencyList={currencyStore}
           defaultValue={disValue}
@@ -126,15 +124,6 @@ const PayForm = ({
           setAutocompleteInput={setDisInput}
           image={imageDis}
           setImage={setImageDis}
-          placeholder={cryptoValue.toString()}
-          placeholderStyle={{
-            '& input': {
-              '&::placeholder': {
-                color: '#FFFFFF',
-                opacity: 1,
-              },
-            },
-          }}
           typeSelect
         />
       </Box>
@@ -151,7 +140,7 @@ const PayForm = ({
         <Select
           disabled
           currencyList={currencyStore}
-          value={totalValue}
+          value={totalValue.toFixed(2)}
           placeholder="Всего"
           setAutocompleteValue={setControlValue}
           setAutocompleteInput={setControlInput}

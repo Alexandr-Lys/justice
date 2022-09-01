@@ -3,6 +3,7 @@ import axios from 'axios';
 import { addDataCurrencyAction } from '../reducers/currencyReducer';
 import { currencyList, getCurrencyList } from '../../api/currency';
 import { addDataTransferAction } from '../reducers/convertReducer';
+import { addDataHistoryAction } from '../actions/actions';
 
 export const getApiDataCurrency = () => (dispatch) => {
   axios.get(
@@ -29,5 +30,12 @@ export const receiveTransfer = (amount, currencyOf, currencyReceive) => (dispatc
     .then((response) => dispatch(
       addDataTransferAction(response.data[currencyReceive], amount, currencyOf, currencyReceive),
     ));
+};
+
+export const addHistory = (userId, dispatch) => {
+  axios.post(
+    `http://${process.env.REACT_APP_HOST}/api/history/`,
+    { userId },
+  ).then((response) => dispatch(addDataHistoryAction(response.data)));
 };
 
