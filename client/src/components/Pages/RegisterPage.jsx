@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm, useFormState } from 'react-hook-form';
 import { Box, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
@@ -12,6 +12,7 @@ import { schemaValidationRegister } from '../../form/formValidation';
 import { ReactComponent as GoogleIcon } from '../../assets/icons/GoogleIcon.svg';
 import { ReactComponent as GitHubIcon } from '../../assets/icons/GitHubIcon.svg';
 import { ReactComponent as IllustrationLogin } from '../../assets/svg/IllustrationLogin.svg';
+import { registerUser } from '../../api/auth';
 
 const RegisterPage = () => {
   const {
@@ -21,9 +22,14 @@ const RegisterPage = () => {
   } = useForm({ reValidateMode: 'onSubmit', resolver: yupResolver(schemaValidationRegister) });
   const navigate = useNavigate();
   const { errors } = useFormState({ control });
-  const onSubmit = (data) => {
-    console.log(data);
-    navigate('/login');
+  const [registerError, setRegisterError] = useState('');
+  const onSubmit = async (data) => {
+    const userData = await registerUser(data);
+    if (userData.errorEmail) {
+      setRegisterError(`${userData.errorEmail}`);
+    } else {
+      navigate('/login');
+    }
   };
 
   return (
@@ -64,7 +70,7 @@ const RegisterPage = () => {
               label="E-mail"
               name="email"
               control={control}
-              errorText={errors?.email?.message}
+              errorText={errors?.email?.message || registerError}
               validation
             />
             <Box>

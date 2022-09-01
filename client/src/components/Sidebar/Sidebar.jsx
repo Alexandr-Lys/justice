@@ -3,7 +3,7 @@ import {
   Box, List, ListItemButton, ListItemText,
 } from '@mui/material';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { ReactComponent as Chart } from '../../assets/svg/chart.svg';
 import { ReactComponent as PersonalCard } from '../../assets/svg/personalcard.svg';
@@ -21,6 +21,7 @@ const Sidebar = () => {
     setSelectedIndex(index);
     window.localStorage.setItem('selectedIndex', index);
   };
+  const navigate = useNavigate();
   return (
     <Box sx={{
       width: '240px',
@@ -107,7 +108,11 @@ const Sidebar = () => {
         <Link to="/">
           <ListItemButton
             selected={selectedIndex === 5}
-            onClick={(event) => handleListItemClick(event, 5)}
+            onClick={(event) => {
+              handleListItemClick(event, 5);
+              window.localStorage.clear();
+              navigate('/');
+            }}
           >
             <Exit />
             <ListItemText primary="Выход" />

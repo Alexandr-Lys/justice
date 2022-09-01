@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const ADD_DATA_CRYPTO_GRAPH = 'ADD_DATA_CRYPTO_GRAPH';
-const ADD_DATA_CRYPTO = 'ADD_DATA_CRYPTO';
 
 const defaultState = {
   crypto: 'BTC',
@@ -15,11 +14,6 @@ export const graphReducer = (state = defaultState, action) => {
   switch (action.type) {
     case ADD_DATA_CRYPTO_GRAPH:
       return action.payload;
-    case ADD_DATA_CRYPTO:
-      return {
-        ...state,
-        crypto: action.payload,
-      };
     default:
       return state;
   }
