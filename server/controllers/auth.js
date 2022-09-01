@@ -12,11 +12,11 @@ module.exports.login = async (req, res) => {
     if(passwordResult){
       const token = jwt.sign({
         email: candidate.email,
-        userId: candidate._id
-      }, keys.jwt, {expiresIn: 10}) //60*60
+        userId: candidate._id,
+      }, keys.jwt, {expiresIn: 60*60})
 
       res.status(200).json({
-        token: `Bearer ${token}`
+        token: token
       })
     } else{
       res.status(401).json({

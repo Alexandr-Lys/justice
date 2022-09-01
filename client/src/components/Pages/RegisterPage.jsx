@@ -25,8 +25,8 @@ const RegisterPage = () => {
   const [registerError, setRegisterError] = useState('');
   const onSubmit = async (data) => {
     const userData = await registerUser(data);
-    if (typeof userData === 'string') {
-      setRegisterError(`${userData}`);
+    if (userData.errorEmail) {
+      setRegisterError(`${userData.errorEmail}`);
     } else {
       navigate('/login');
     }

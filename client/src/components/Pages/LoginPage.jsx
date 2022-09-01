@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { useDispatch } from 'react-redux';
 import InputComponent from '../Inputs/InputComponent';
 import ButtonComponent from '../Buttons/ButtonComponent';
 import CheckboxComponent from '../Checkbox/CheckboxComponent';
@@ -14,9 +15,11 @@ import { loginUser } from '../../api/auth';
 import { ReactComponent as GoogleIcon } from '../../assets/icons/GoogleIcon.svg';
 import { ReactComponent as GitHubIcon } from '../../assets/icons/GitHubIcon.svg';
 import { ReactComponent as IllustrationLogin } from '../../assets/svg/IllustrationLogin.svg';
+import { addUserDataAction } from '../../store/actions/actions';
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   useEffect(() => {
     if (window.localStorage.getItem('token')) {
       navigate('/admin/markets');
@@ -31,13 +34,15 @@ const LoginPage = () => {
   const [loginError, setLoginError] = useState({});
 
   const onSubmit = async (data) => {
-    const userToken = await loginUser(data);
-    if (userToken.email || userToken.password) {
+    const userData = await loginUser(data);
+    if (userData.emailError || userData.passwordError) {
       setLoginError({
-        ...userToken,
+        ...userData,
       });
     } else {
-      window.localStorage.setItem('token', userToken);
+      window.localStorage.setItem('token', userData.token);
+      window.localStorage.setItem('userId', userData.userId);
+      dispatch(addUserDataAction(userData));
       navigate('/admin/markets');
     }
   };
@@ -71,14 +76,14 @@ const LoginPage = () => {
               label="E-mail"
               name="email"
               control={control}
-              errorText={errors?.email?.message || loginError?.email}
+              errorText={errors?.email?.message || loginError?.emailError}
             />
             <InputComponent
               type="password"
               label="Пароль"
               name="password"
               control={control}
-              errorText={errors?.password?.message || loginError?.password}
+              errorText={errors?.password?.message || loginError?.passwordError}
             />
             <CheckboxComponent label="Запомнить меня" name="remember" control={control} />
             <ButtonComponent label="Войти" color="secondary" type="submit" />
