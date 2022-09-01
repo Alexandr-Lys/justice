@@ -20,7 +20,7 @@ import './App.css';
 const App = () => {
   const theme = createTheme(Theme);
   const dispatch = useDispatch();
-  dispatch(getApiDataCurrency());
+  getApiDataCurrency(dispatch);
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

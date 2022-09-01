@@ -41,7 +41,6 @@ export const registerUser = async (data) => {
   )
     .then((response) => response)
     .catch((err) => err.response);
-  console.log(register);
   if (register.status === 409) {
     return {
       errorEmail: register.data.message,

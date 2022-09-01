@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Box, Typography,
 } from '@mui/material';
 
 import { activityPage } from '../MuiStyles';
 import TableComponent from '../../Table/Table';
-
-import USDT from '../../../assets/svg/criptorrency/CryptocurrencyUSDT.svg';
-import ADA from '../../../assets/svg/criptorrency/CryptocurrencyADA.svg';
+import { addHistory } from '../../../store/asyncActions/data';
 
 const ActivityPage = () => {
+  const dispatch = useDispatch();
+  const userId = window.localStorage.getItem('userId');
+  useEffect(() => {
+    addHistory(userId, dispatch);
+  }, []);
+  const history = useSelector((state) => state.history);
+  const currencyList = useSelector((state) => state.currency);
   const columns = [
     { id: 'activeGive', label: 'Актив', minWidth: '120px' },
     { id: 'swapImg' },
@@ -19,56 +25,29 @@ const ActivityPage = () => {
     { id: 'time', label: 'Время', minWidth: '120px' },
     { id: 'status', label: 'Статус' },
   ];
-  const rows = [
-    {
-      activeGive: 'currencyBoxGive',
-      swapImg: 'swap',
-      activeGet: 'currencyBoxGet',
-      give: 0,
-      get: 0,
-      time: 0,
-      status: 'status',
-      statusText: 'В обработке',
-      shortNameGive: 'USDT',
-      shortNameGet: 'ADA',
-      fullNameGive: 'TetherUS',
-      fullNameGet: 'Cardano',
-      giveImg: USDT,
-      getImg: ADA,
-    },
-    {
-      activeGive: 'currencyBoxGive',
-      swapImg: 'swap',
-      activeGet: 'currencyBoxGet',
-      give: 0,
-      get: 0,
-      time: 0,
-      status: 'status',
-      statusText: 'Отклонено',
-      shortNameGive: 'USDT',
-      shortNameGet: 'ADA',
-      fullNameGive: 'TetherUS',
-      fullNameGet: 'Cardano',
-      giveImg: USDT,
-      getImg: ADA,
-    },
-    {
-      activeGive: 'currencyBoxGive',
-      swapImg: 'swap',
-      activeGet: 'currencyBoxGet',
-      give: 0,
-      get: 0,
-      time: 0,
-      status: 'status',
-      statusText: 'Успешно',
-      shortNameGive: 'USDT',
-      shortNameGet: 'ADA',
-      fullNameGive: 'TetherUS',
-      fullNameGet: 'Cardano',
-      giveImg: USDT,
-      getImg: ADA,
-    },
-  ];
+  const rowsModel = {
+    activeGive: 'currencyBoxGive',
+    swapImg: 'swap',
+    activeGet: 'currencyBoxGet',
+    status: 'status',
+  };
+  const rows = history.map((item) => {
+    const giveCurrencyData = currencyList.find((currencyItem) => currencyItem.shortName === item.giveCurrency);
+    const getCurrencyData = currencyList.find((currencyItem) => currencyItem.shortName === item.getCurrency);
+    return {
+      ...rowsModel,
+      give: item.give.toFixed(2),
+      get: item.get.toFixed(2),
+      time: item.time,
+      statusText: item.status,
+      shortNameGive: item.giveCurrency,
+      shortNameGet: item.getCurrency,
+      fullNameGive: giveCurrencyData.fullName,
+      fullNameGet: getCurrencyData.fullName,
+      giveImg: giveCurrencyData.img,
+      getImg: getCurrencyData.img,
+    };
+  });
 
   return (
     <Box sx={activityPage}>
@@ -79,9 +58,8 @@ const ActivityPage = () => {
         rows={rows}
         columns={columns}
         pagination
-        paginationCount={1}
-        page={1}
-        rowsPerPageOptions={[1]}
+        paginationCount={rows.length}
+        rowsPerPageOptions={[5, 10, 15]}
       />
     </Box>
   );
