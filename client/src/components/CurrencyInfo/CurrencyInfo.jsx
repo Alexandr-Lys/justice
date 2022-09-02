@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Typography } from '@mui/material';
-
 import { currencyInfoStyles } from '../Pages/MuiStyles';
-import { addDataCryptoGraphAction } from '../../store/reducers/graphReducer';
 import Chart from './components/Chart';
 import PayForm from './components/PayForm';
+import { getCryptoGraph } from '../../store/asyncActions/data';
 
 const CurrencyInfo = () => {
   const [typeChart, setTypeChart] = useState(1);
-  const graphStore = useSelector((state) => state.graph);
+  const graphStore = useSelector((state) => state.graph.data);
+  const loading = useSelector((state) => state.graph.loading);
   const [interval, setInterval] = useState(graphStore.interval);
   const dispatch = useDispatch();
-  const dispatchCryptoGraph = async (time, currencyGet, cryptoGet, limit) => {
-    dispatch(await addDataCryptoGraphAction(cryptoGet, currencyGet, time, limit));
-  };
+  // const dispatchCryptoGraph = async (time, currencyGet, cryptoGet, limit) => {
+  //   dispatch(await addDataCryptoGraphAction(cryptoGet, currencyGet, time, limit));
+  // };
+  // dispatchCryptoGraph(interval, graphStore.currency, graphStore.crypto, graphStore.limit);
   useEffect(() => {
-    dispatchCryptoGraph(interval, graphStore.currency, graphStore.crypto, graphStore.limit);
+    dispatch(getCryptoGraph(graphStore.crypto, graphStore.currency, interval, graphStore.limit));
   }, [interval]);
   const currencyStore = useSelector((state) => state.currency);
   const graphData = graphStore.data;
-  if (!graphData) {
-    return '';
-  }
+  useEffect(() => {
+    console.log(graphData);
+  }, [loading]);
+  console.log(graphData);
   const todayGraphData = graphData[graphData.length - 1];
   const colorData = todayGraphData[4] > graphData[graphData.length - 2][4] ? '#0ECB81' : '#EB6B6B';
 

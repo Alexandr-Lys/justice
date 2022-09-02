@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { MetaMaskProvider } from 'metamask-react';
 import {
   ThemeProvider, createTheme,
 } from '@mui/material';
@@ -24,27 +25,29 @@ const App = () => {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        <Router>
-          <Routes>
-            <Route path="/" element={<StartPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/refill" element={<Refill />} />
-            <Route path="/output" element={<Output />} />
-            <Route
-              path="/admin"
-              element={(
-                <MainPage />
+        <MetaMaskProvider>
+          <Router>
+            <Routes>
+              <Route path="/" element={<StartPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/refill" element={<Refill />} />
+              <Route path="/output" element={<Output />} />
+              <Route
+                path="/admin"
+                element={(
+                  <MainPage />
             )}
-            >
-              { routing.map((route) => (
-                route.path
-                  ? <Route key={route.path} path={route.path} element={route.component} />
-                  : <Route key={route.path} index element={route.component} />
-              )) }
-            </Route>
-          </Routes>
-        </Router>
+              >
+                { routing.map((route) => (
+                  route.path
+                    ? <Route key={route.path} path={route.path} element={route.component} />
+                    : <Route key={route.path} index element={route.component} />
+                )) }
+              </Route>
+            </Routes>
+          </Router>
+        </MetaMaskProvider>
       </ThemeProvider>
     </div>
   );

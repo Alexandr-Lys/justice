@@ -55,7 +55,7 @@ const ActivityPage = () => {
         <Typography variant="h2" component="h1">Транзакции</Typography>
       </Box>
       <TableComponent
-        rows={rows}
+        rows={rows.reverse()}
         columns={columns}
         pagination
         paginationCount={rows.length}

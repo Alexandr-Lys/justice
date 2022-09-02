@@ -1,22 +1,16 @@
-const ADD_DATA_CRYPTO_GRAPH = 'ADD_DATA_CRYPTO_GRAPH';
+const ADD_DATA_WALLET = 'ADD_DATA_WALLET';
 const LOADING = 'LOADING';
 const ERROR = 'ERROR';
-
 const defaultState = {
   loading: false,
   error: null,
-  data: {
-    crypto: 'BTC',
-    currency: 'USDT',
-    interval: '1d',
-    limit: '100',
-  },
+  data: [],
 };
 
 // eslint-disable-next-line default-param-last
-export const graphReducer = (state = defaultState, action) => {
+export const walletReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case ADD_DATA_CRYPTO_GRAPH:
+    case ADD_DATA_WALLET:
       return {
         ...state,
         data: action.payload,

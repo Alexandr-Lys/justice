@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom';
 import SearchInput from '../../Inputs/SearchInput';
 import { marketsPageStyles } from '../MuiStyles';
 import TableComponent from '../../Table/Table';
-import { addDataCryptoGraphAction } from '../../../store/reducers/graphReducer';
+import { getCryptoGraph } from '../../../store/asyncActions/data';
 
 const MarketsPage = () => {
   const dispatch = useDispatch();
-  const defaultDataGraph = useSelector((state) => state.graph);
+  const defaultDataGraph = useSelector((state) => state.graph.data);
 
   const rows = useSelector((state) => state.currency);
   const columns = [
@@ -52,7 +52,13 @@ const MarketsPage = () => {
             .firstElementChild
             .firstElementChild
             .childNodes[1].innerHTML;
-          dispatch(await addDataCryptoGraphAction(
+          console.log([
+            crypto,
+            defaultDataGraph.currency,
+            defaultDataGraph.interval,
+            defaultDataGraph.limit,
+          ]);
+          dispatch(getCryptoGraph(
             crypto,
             defaultDataGraph.currency,
             defaultDataGraph.interval,

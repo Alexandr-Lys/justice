@@ -18,8 +18,10 @@ import StepperComponent from '../Stepper/StepperComponent';
 
 import RUB from '../../assets/svg/criptorrency/CurrencyRUB.svg';
 import USD from '../../assets/svg/criptorrency/CurrencyUSD.svg';
+import { createWalletData } from '../../api/wallet';
 
 const Refill = () => {
+  const userId = window.localStorage.getItem('userId');
   const currencyList = [
     {
       name: 'currencyBox',
@@ -46,7 +48,7 @@ const Refill = () => {
   ];
   const navigate = useNavigate();
   const [controlValue, setControlValue] = useState(currencyList[0]);
-  const [controlInput, setControlInput] = useState('BTC');
+  const [controlInput, setControlInput] = useState('RUB');
   const [imageControl, setImageControl] = useState(currencyList[0]?.img);
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -56,8 +58,9 @@ const Refill = () => {
   });
   const { errors } = useFormState({ control });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    console.log([Number(data.amount), controlInput, userId]);
+    await createWalletData(Number(data.amount), controlInput, userId, 1);
     setModalOpen(true);
   };
   const handleClose = () => {

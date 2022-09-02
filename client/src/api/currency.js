@@ -1,3 +1,4 @@
+import axios from 'axios';
 import BTC from '../assets/svg/criptorrency/CryptocurrencyBTC.svg';
 import ETH from '../assets/svg/criptorrency/CryptocurrencyETH.svg';
 import XRP from '../assets/svg/criptorrency/CryptocurrencyXPR.svg';
@@ -228,4 +229,9 @@ export const getCurrencyList = (apiData, list) => currencyList.map((object, inde
     capitalize: `${apiData.DISPLAY?.[list[index]?.shortName].RUB.TOTALTOPTIERVOLUME24HTO}`,
   };
 });
+
+export const getCourse = async (from, to) => {
+  const response = await axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${from}&tsyms=${to}`);
+  return response.data.RAW[from][to].PRICE;
+};
 
