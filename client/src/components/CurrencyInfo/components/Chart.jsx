@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import ReactECharts from 'echarts-for-react';
 
 const Chart = ({ typeChart }) => {
-  const graphStore = useSelector((state) => state.graph);
+  const graphStore = useSelector((state) => state.graph.data);
   const graphData = graphStore.data;
   const dates = graphData.map((item, index) => index);
   const data = graphData.map((item) => [+item[4], +item[1], +item[3], +item[2]]);

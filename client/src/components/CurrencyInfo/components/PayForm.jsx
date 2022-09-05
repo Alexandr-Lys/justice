@@ -21,7 +21,7 @@ const PayForm = ({
 }) => {
   const userId = window.localStorage.getItem('userId');
   const dispatch = useDispatch();
-  const { interval, limit } = useSelector((state) => state.graph);
+  const { interval, limit } = useSelector((state) => state.graph.data);
   const [controlValue, setControlValue] = useState(currentCurrencyData);
   const [controlInput, setControlInput] = useState(currentCurrencyData.shortName);
   const [imageControl, setImageControl] = useState(currentCurrencyData?.img);
@@ -96,7 +96,7 @@ const PayForm = ({
     <Box>
       {
       walletState.loading
-        ? (<CircularProgress color="inherit" />)
+        ? (<CircularProgress />)
         : (
           <Box sx={payFormStyles}>
             <Box>
