@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 
 const authRoutes = require('./routes/auth')
 const historyRoutes = require('./routes/history')
+const walletRoutes = require('./routes/wallet')
 const keys = require('./config/keys')
 
 const app = express();
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use('/api/auth', authRoutes)
 app.use('/api/history', historyRoutes)
+app.use('/api/wallet', walletRoutes)
 app.use(require('cors')())
 
 module.exports = app;

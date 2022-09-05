@@ -30,6 +30,7 @@ export const currencyNameStyles = {
 };
 
 export const selectStyles = {
+  width: '100%',
   justifyContent: 'center',
   backgroundColor: 'transparent',
   '& input': {
@@ -549,6 +550,7 @@ export const refillPageStepOneStyles = {
   flexDirection: 'column',
   borderRight: BORDER,
   pr: '283px',
+  width: '350px',
   '& h2': {
     margin: '48px 0 40px',
   },
@@ -568,7 +570,7 @@ export const refillPageStepTwoStyles = {
   flexDirection: 'column',
   gap: '40px',
   borderRight: BORDER,
-  pr: '265px',
+  pr: '283px',
   '&>h2': {
     m: '48px 0 42px',
   },
@@ -711,34 +713,34 @@ export const currencyInfoStyles = {
       },
     },
   },
-  '&>div:last-of-type': {
-    p: '32px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    '&>svg': {
-      m: '32px auto',
+};
+export const payFormStyles = {
+  p: '32px',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  '&>svg': {
+    m: '32px auto',
+  },
+  '& .balance': {
+    width: '100%',
+    ...flexAlign,
+    pt: '16px',
+    pb: '48px',
+    justifyContent: 'space-between',
+  },
+  '& .tags': {
+    pt: '16px',
+    pb: '32px',
+    pr: '100px',
+    ...flexAlign,
+    gap: '8px',
+    maxWidth: '188px',
+    '& p': {
+      cursor: 'pointer',
     },
-    '& .balance': {
-      width: '100%',
-      ...flexAlign,
-      pt: '16px',
-      pb: '48px',
-      justifyContent: 'space-between',
-    },
-    '& .tags': {
-      pt: '16px',
-      pb: '32px',
-      pr: '100px',
-      ...flexAlign,
-      gap: '8px',
-      maxWidth: '188px',
-      '& p': {
-        cursor: 'pointer',
-      },
-    },
-    '& .buy-button': {
-      mb: '32px',
-    },
+  },
+  '& .buy-button': {
+    mb: '32px',
   },
 };

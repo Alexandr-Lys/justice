@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   Box, Typography,
@@ -16,11 +16,14 @@ import RadioButton from '../Buttons/RadioButton';
 import InputComponent from '../Inputs/InputComponent';
 import ModalComponent from '../ModalComponent/ModalComponent';
 import StepperComponent from '../Stepper/StepperComponent';
+import { getCourse } from '../../api/currency';
 
 import USD from '../../assets/svg/criptorrency/CurrencyUSD.svg';
 import RUB from '../../assets/svg/criptorrency/CurrencyRUB.svg';
+import { updateWalletPay } from '../../api/wallet';
 
 const Output = () => {
+  const userId = window.localStorage.getItem('userId');
   const currencyList = [
     {
       name: 'currencyBox',
@@ -58,10 +61,15 @@ const Output = () => {
   const [currencyInput, setCurrencyInput] = useState('RUB');
   const [imageCurrency, setImageCurrency] = useState(currencyList[0]?.img);
 
-  const transfer = useMemo(() => {
-    const currencyData = cryptoCurrencyList.find((currency) => cryptoCurrencyInput === currency.shortName);
-    return currencyData.price.replace(/\D/gi, '') * amount;
-  }, [amount]);
+  const [transfer, setTransfer] = useState(0);
+
+  const showCourse = async () => {
+    const course = await getCourse(cryptoCurrencyInput, currencyInput);
+    setTransfer(course * amount);
+  };
+  useEffect(() => {
+    showCourse();
+  }, [amount, cryptoCurrencyInput, currencyInput]);
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -72,8 +80,8 @@ const Output = () => {
   const { errors } = useFormState({ control });
   const watchForm = watch(['cardNumber', 'cardUser']);
 
-  const onSubmit = () => {
-    setModalOpen(true);
+  const onSubmit = async (data) => {
+    await updateWalletPay(Number(data.amount), transfer, cryptoCurrencyInput, currencyInput, userId);
   };
   const handleClose = () => {
     setModalOpen(false);
@@ -126,7 +134,7 @@ const Output = () => {
                   />
                   <Typography variant="subtitle" component="h3">Валюта</Typography>
                   <Select
-                    typeSelect="disabledInput"
+                    typeSelect
                     currencyList={currencyList}
                     defaultValue={currencyList[0]}
                     setAutocompleteValue={setCurrencyValue}
@@ -203,10 +211,11 @@ const Output = () => {
                     <Box>
                       <Typography variant="subtitle" component="h3">Валюта</Typography>
                       <Select
+                        className="total"
                         disabled
                         typeSelect="disabled"
-                        autocompleteInput={currencyList[0].shortName}
-                        image={currencyList[0].img}
+                        autocompleteInput={currencyInput}
+                        image={imageCurrency}
                         value={transfer}
                       />
                     </Box>

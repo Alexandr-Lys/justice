@@ -72,9 +72,6 @@ const Select = ({
                         onChange={(e, newValue) => {
                           setAutocompleteValue(newValue);
                           setImage(e.currentTarget.firstChild.firstChild.attributes[0].value);
-                          if (setAmount) {
-                            setAmount(e.currentTarget.firstChild.lastChild.innerHTML);
-                          }
                         }}
                         freeSolo
                         value={autocompleteValue}
@@ -186,9 +183,6 @@ const Select = ({
                     onChange={(e, newValue) => {
                       setAutocompleteValue(newValue);
                       setImage(e.currentTarget.firstChild.firstChild.attributes[0].value);
-                      if (setAmount) {
-                        setAmount(e.currentTarget.firstChild.lastChild.innerHTML);
-                      }
                     }}
                     noOptionsText="Не найдено"
                     disableClearable
