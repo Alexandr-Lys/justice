@@ -36,14 +36,14 @@ export const receiveTransfer = (amount, currencyOf, currencyReceive) => (dispatc
 };
 
 export const addHistory = (userId, dispatch) => {
-  axios.get(`http://${process.env.REACT_APP_HOST}/api/history/${userId}`)
+  axios.get(`${process.env.REACT_APP_HOST}/history/${userId}`)
     .then((response) => dispatch(addDataHistoryAction(response.data)));
 };
 
 export const addWallet = (userId) => async (dispatch) => {
   try {
     dispatch(loadingAction(true));
-    const response = await axios.get(`http://${process.env.REACT_APP_HOST}/api/wallet/${userId}`);
+    const response = await axios.get(`${process.env.REACT_APP_HOST}/wallet/${userId}`);
     dispatch(addDataWalletAction(response.data));
   } catch (e) {
     dispatch(errorAction(e));
@@ -53,7 +53,6 @@ export const addWallet = (userId) => async (dispatch) => {
 };
 
 export const getCryptoGraph = (crypto, currency, interval, limit) => async (dispatch) => {
-  console.log(crypto, currency, interval, limit);
   try {
     dispatch(loadingAction(true));
     const response = await axios
