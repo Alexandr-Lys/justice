@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Typography } from '@mui/material';
+import { Box, CircularProgress, Typography } from '@mui/material';
+
 import { currencyInfoStyles } from '../Pages/MuiStyles';
 import Chart from './components/Chart';
 import PayForm from './components/PayForm';
@@ -9,14 +10,8 @@ import { getCryptoGraph } from '../../store/asyncActions/data';
 const CurrencyInfo = () => {
   const [typeChart, setTypeChart] = useState(1);
   const graphStore = useSelector((state) => state.graph.data);
-  // const loading = useSelector((state) => state.graph.loading);
   const dispatch = useDispatch();
   const [interval, setInterval] = useState(graphStore.interval);
-  // const dispatchCryptoGraph = async (time, currencyGet, cryptoGet, limit) => {
-  //   dispatch(await addDataCryptoGraphAction(cryptoGet, currencyGet, time, limit));
-  // };
-  // dispatchCryptoGraph(interval, graphStore.currency, graphStore.crypto, graphStore.limit);
-  // dispatch(getCryptoGraph(graphStore.crypto, graphStore.currency, interval, graphStore.limit));
   useEffect(() => {
     dispatch(getCryptoGraph(graphStore.crypto, graphStore.currency, interval, graphStore.limit));
   }, []);
@@ -152,7 +147,7 @@ const CurrencyInfo = () => {
       </Box>
     );
   }
-  return <Box>dasf</Box>;
+  return <CircularProgress />;
 };
 
 export default CurrencyInfo;

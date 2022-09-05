@@ -52,12 +52,6 @@ const MarketsPage = () => {
             .firstElementChild
             .firstElementChild
             .childNodes[1].innerHTML;
-          console.log([
-            crypto,
-            defaultDataGraph.currency,
-            defaultDataGraph.interval,
-            defaultDataGraph.limit,
-          ]);
           dispatch(getCryptoGraph(
             crypto,
             defaultDataGraph.currency,

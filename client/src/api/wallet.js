@@ -5,7 +5,7 @@ export const createWalletData = async (amount, currencyName, userId, operation) 
   if (currencyName === 'USD') currency = 'USDT';
 
   await axios.patch(
-    `http://${process.env.REACT_APP_HOST}/api/wallet/${userId}`,
+    `${process.env.REACT_APP_API}/wallet/${userId}`,
     {
       amount,
       operation,

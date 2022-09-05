@@ -7,11 +7,11 @@ import Tag from '../../Tags/Tag';
 import ButtonComponent from '../../Buttons/ButtonComponent';
 import Notification from '../../Notification/Notification';
 import { createPayHistory } from '../../../api/history';
-
-import { ReactComponent as Swap } from '../../../assets/svg/Swap.svg';
 import { updateWalletPay } from '../../../api/wallet';
 import { addWallet, getCryptoGraph } from '../../../store/asyncActions/data';
 import { payFormStyles } from '../../Pages/MuiStyles';
+
+import { ReactComponent as Swap } from '../../../assets/svg/Swap.svg';
 
 const PayForm = ({
   currentCryptoData,

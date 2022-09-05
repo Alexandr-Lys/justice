@@ -1,11 +1,11 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
-const host = process.env.REACT_APP_HOST;
+const apiUrl = process.env.REACT_APP_API;
 
 export const loginUser = async (data) => {
   const login = await axios.post(
-    `http://${host}/api/auth/login`,
+    `http://${apiUrl}/api/auth/login`,
     {
       email: data.email,
       password: data.password,
@@ -32,7 +32,7 @@ export const loginUser = async (data) => {
 };
 export const registerUser = async (data) => {
   const register = await axios.post(
-    `http://${host}/api/auth/register`,
+    `http://${apiUrl}/api/auth/register`,
     {
       email: data.email,
       password: data.password,

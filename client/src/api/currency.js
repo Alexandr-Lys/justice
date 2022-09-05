@@ -231,7 +231,11 @@ export const getCurrencyList = (apiData, list) => currencyList.map((object, inde
 });
 
 export const getCourse = async (from, to) => {
-  const response = await axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${from}&tsyms=${to}`);
-  return response.data.RAW[from][to].PRICE;
+  try {
+    const response = await axios.get(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${from}&tsyms=${to}`);
+    return response.data.RAW[from][to].PRICE;
+  } catch (e) {
+    return e;
+  }
 };
 

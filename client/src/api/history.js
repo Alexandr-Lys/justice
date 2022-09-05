@@ -9,7 +9,7 @@ const getTime = () => {
 export const createPayHistory = async (give, get, giveCurrency, getCurrency, userId) => {
   const time = getTime();
   await axios.post(
-    `http://${process.env.REACT_APP_HOST}/api/history/`,
+    `${process.env.REACT_APP_API}/history/`,
     {
       give, get, giveCurrency, getCurrency, time, userId,
     },

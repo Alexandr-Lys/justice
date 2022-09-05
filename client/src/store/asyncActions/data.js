@@ -65,12 +65,3 @@ export const getCryptoGraph = (crypto, currency, interval, limit) => async (disp
     dispatch(loadingAction(false));
   }
 };
-
-// export const getCryptoGraph = (crypto, currency, interval, limit) => (dispatch) => {
-//   console.log(crypto, currency, interval, limit);
-// eslint-disable-next-line max-len
-//   axios.get(`https://www.binance.com/api/v3/uiKlines?limit=${limit}&symbol=${crypto}${currency}&interval=${interval}`)
-//     .then((response) => dispatch(addDataCryptoGraphAction(crypto, currency, interval, limit, [...response.data])))
-//     .catch((error) => dispatch(errorAction(error)));
-// };
-
