@@ -30,7 +30,6 @@ const CurrencyInfo = () => {
   };
   if (graphData) {
     const { currency, crypto } = graphStore;
-    console.log(graphData);
     const todayGraphData = graphData[graphData.length - 1];
     const cryptoToCurrency = Number(todayGraphData[4]).toFixed(2);
     const currencyToRub = Number(currencyStore[4].price.replace(/^₽/g, '')) * cryptoToCurrency;
