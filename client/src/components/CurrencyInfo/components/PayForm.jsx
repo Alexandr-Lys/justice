@@ -43,7 +43,7 @@ const PayForm = ({
 
   useEffect(() => {
     const walletCurrency = wallet.find((item) => item.currencyName === controlInput);
-    setBalance(walletCurrency?.amount);
+    setBalance(walletCurrency?.amount || 0);
   }, [wallet]);
 
   useEffect(() => {
@@ -96,7 +96,18 @@ const PayForm = ({
     <Box>
       {
       walletState.loading
-        ? (<CircularProgress />)
+        ? (
+          <Box sx={{
+            width: '302px',
+            height: '300px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          >
+            <CircularProgress />
+          </Box>
+        )
         : (
           <Box sx={payFormStyles}>
             <Box>
